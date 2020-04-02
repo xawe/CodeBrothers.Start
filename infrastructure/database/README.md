@@ -36,4 +36,16 @@ Alguns comandos uteis do psql
 
     - \dt                       --- lista as tabelas do banco conectado
 
+## 🎈 pgAdmin 4
 
+O pgAdmin é uma plataforma opensource de administração e desenvolvimento para PostgreSQL e seus sistemas de gerenciamento de banco de dados relacionados. Escrito em Python e jQuery, ele suporta todos os recursos encontrados no PostgreSQL. Você pode utilizar o pgAdmin para fazer tudo, desde escrever consultas SQL básicas a monitorar seus bancos de dados e configurar arquiteturas de banco de dados avançadas.
+
+Para ter acesso ao pgAdmin:
+
+---
+
+http://127.0.0.1:16543/
+User: codebrother@codebrother.com.br
+Pass: CodeBrother@2020
+
+---
