@@ -3,20 +3,20 @@
 Aqui serão armazenadas as definições de infra estrutura.
 
 Podemos considerar como infraestrura:
-    Banco de dados 
-        
+    ## Banco de dados 
+
          - Scripts de metadados
 
          - Scripts de carga
 
          - Scripts de inicialização e container
     
-    Serviços de cache
+    # Serviços de cache
     
-    Serviços de log
+    # Serviços de log
     
-    Discovery Services
+    # Discovery Services
 
-    ServiceMesh
+    # ServiceMesh
 
-    Scripts
+    # Scripts de automação diversos
