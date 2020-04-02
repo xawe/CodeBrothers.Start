@@ -26,7 +26,7 @@ Para executar o psql via console
     docker exec -it id_do_container psql psql -U postgres
 
 ---
-
+---
 
 Alguns comandos uteis do psql
 
