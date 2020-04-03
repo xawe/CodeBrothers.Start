@@ -2,7 +2,7 @@ version: '3'
 
 services:
   postgresql-code-brother:
-    image: 'bitnami/postgresql:11'
+    image: 'marcosjlima/postgresql-codebrothers:1'
     ports:
       - '5432:5432'
     volumes:
@@ -13,7 +13,7 @@ services:
       - postgres-network
 
   pgadmin-code-brother:
-    image: dpage/pgadmin4
+    image: 'marcosjlima/pgadmin-codebrothers:1'
     environment:
       PGADMIN_DEFAULT_EMAIL: "codebrother@codebrother.com.br"
       PGADMIN_DEFAULT_PASSWORD: "CodeBrother@2020"

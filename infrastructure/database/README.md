@@ -51,3 +51,20 @@ Para ter acesso ao pgAdmin:
     Pass: CodeBrother@2020
 
 ---
+
+## ⛏️ Construindo uma imagem e enviado ao dockerhub
+
+Essa parte é um resumo dos comandos necessários para se enviar uma imagem ao dockerhub
+
+---
+
+-- Baixando a imagem base
+docker pull nginx:alpine
+
+-- gerando sua imagem
+docker tag nginx:alpine codebrothers/nginx-codebrothers:latest
+
+-- enviando ao dockerhub
+docker push codebrothers/nginx-codebrothers:latest
+
+---
