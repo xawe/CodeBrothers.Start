@@ -68,19 +68,25 @@ docker pull nginx:alpine
 docker tag nginx:alpine codebrothers/nginx-codebrothers:latest
 ```
 
-3. Enviando ao dockerhub 'docker push <nome_repo_dockerhub>/<imagem_destino:tag>':
+3. Efetuar login no docker 'docker login -u<usuario> -p<senha>'
+
+```
+docker login -u usuario -p senha
+```
+
+4. Enviando ao dockerhub 'docker push <nome_repo_dockerhub>/<imagem_destino:tag>':
 
 ```
 docker push codebrothers/nginx-codebrothers:latest
 ```
 
-4. Modificando a Tag (versão) da imagem 'docker tag <nome_repo_dockerhub>/<imagem_destino:tag> <nome_repo_dockerhub>/<imagem_destino:nova-tag>':
+5. Modificando a Tag (versão) da imagem 'docker tag <nome_repo_dockerhub>/<imagem_destino:tag> <nome_repo_dockerhub>/<imagem_destino:nova-tag>':
 
 ```
 docker tag codebrothers/nginx-codebrothers:latest codebrothers/nginx-codebrothers:v1
 ```
 
-6. Execute o comando do item '3 para enviar a nova versão ao dockerhub, lembre-se de mudar a tag de versão.
+6. Execute o comando do item 4 para enviar a nova versão ao dockerhub, lembre-se de mudar a tag de versão.
 
 ```
 docker push codebrothers/nginx-codebrothers:v1
