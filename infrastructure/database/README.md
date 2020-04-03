@@ -58,18 +58,18 @@ Essa parte é um resumo dos comandos necessários para se enviar uma imagem ao d
 
 Baixando a imagem base 'docker pull <nome_imagem:tag>':
 
----
+```
 docker pull nginx:alpine
----
+```
 
 Gerando sua imagem 'docker tag <imagem_origem:tag> <nome_repo_dockerhub>/<imagem_destino:tag>':
 
----
+```
 docker tag nginx:alpine codebrothers/nginx-codebrothers:latest
----
+```
 
 Enviando ao dockerhub 'docker push <nome_repo_dockerhub>/<imagem_destino:tag>':
 
----
+```
 docker push codebrothers/nginx-codebrothers:latest
----
+```
