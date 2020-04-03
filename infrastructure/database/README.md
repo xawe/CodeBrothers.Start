@@ -54,17 +54,28 @@ Para ter acesso ao pgAdmin:
 
 ## ⛏️ Construindo uma imagem e enviado ao dockerhub
 
-Essa parte é um resumo dos comandos necessários para se enviar uma imagem ao dockerhub
+Essa parte é um resumo dos comandos necessários para se enviar uma imagem ao dockerhub.
+
+Baixando a imagem base:
 
 ---
 
--- Baixando a imagem base
 docker pull nginx:alpine
 
--- gerando sua imagem
+---
+
+Gerando sua imagem:
+
+---
+
 docker tag nginx:alpine codebrothers/nginx-codebrothers:latest
 
--- enviando ao dockerhub
+---
+
+Enviando ao dockerhub:
+
+---
+
 docker push codebrothers/nginx-codebrothers:latest
 
 ---
