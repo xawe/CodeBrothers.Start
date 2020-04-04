@@ -2,9 +2,9 @@
 
 Adicionado docker-compose para utilização do Postgresql
 
-A imagem utilizada é a bitnami/postgresql.
+A imagem utilizada é a oficial postgres, customizada para o repositorio codebrother.
 
-    - docker pull bitnami/postgresql
+    - docker pull postgres
 
 Validar se necessário usar a imagem oficial do postgres
 
