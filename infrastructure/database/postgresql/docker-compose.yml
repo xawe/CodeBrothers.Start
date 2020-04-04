@@ -6,14 +6,14 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - 'postgresql_data:/bitnami/postgresql'
+      - 'postgresql_data:/var/lib/postgresql/data'
     environment:
       POSTGRES_PASSWORD: "CodeBrother@2020"
     networks:
       - postgres-network
 
   pgadmin-code-brother:
-    image: 'marcosjlima/pgadmin-codebrothers:1'
+    image: 'dpage/pgadmin4'
     environment:
       PGADMIN_DEFAULT_EMAIL: "codebrother@codebrother.com.br"
       PGADMIN_DEFAULT_PASSWORD: "CodeBrother@2020"
