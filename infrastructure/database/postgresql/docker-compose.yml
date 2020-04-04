@@ -2,7 +2,7 @@ version: '3'
 
 services:
   postgresql-code-brother:
-    image: 'marcosjlima/postgresql-codebrothers:1'
+    image: 'codebrothers/postgres:latest'
     ports:
       - '5432:5432'
     volumes:
