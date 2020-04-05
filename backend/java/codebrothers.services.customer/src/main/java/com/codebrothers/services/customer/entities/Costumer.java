@@ -9,9 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.boot.validation.*;;
+import javax.validation.constraints.NotNull;;
 
 @Entity
 @Table(name = "tb_costumer")
@@ -49,8 +47,6 @@ public class Costumer implements Serializable {
 	
 	@Column(name = "atualizadoem")
 	private Date atualizadoEm;
-
-	
 	
 	public String getNome() {
 		return nome;
@@ -115,7 +111,6 @@ public class Costumer implements Serializable {
 	public void setAtualizadoEm(Date atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-
 				
 	public Costumer() {
 	    
