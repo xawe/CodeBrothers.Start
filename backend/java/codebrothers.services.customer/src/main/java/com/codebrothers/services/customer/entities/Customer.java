@@ -1,7 +1,8 @@
 package com.codebrothers.services.customer.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,14 +40,14 @@ public class Customer implements Serializable {
     private Boolean ativo;
 
     @Column(name = "datanascimento")
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     @Column(name = "criadoem", columnDefinition = "DATE DEFAULT CURRENT_DATE")
     @NotNull
-    private Date criadoEm;
+    private LocalDateTime criadoEm;
 
     @Column(name = "atualizadoem")
-    private Date atualizadoEm;
+    private LocalDateTime atualizadoEm;
 
     public String getNome() {
         return nome;
@@ -88,27 +89,27 @@ public class Customer implements Serializable {
         this.ativo = ativo;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public Date getCriadoEm() {
+    public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(Date criadoEm) {
+    public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
     }
 
-    public Date getAtualizadoEm() {
+    public LocalDateTime  getAtualizadoEm() {
         return atualizadoEm;
     }
 
-    public void setAtualizadoEm(Date atualizadoEm) {
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
     }
 

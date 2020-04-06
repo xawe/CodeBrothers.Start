@@ -1,5 +1,6 @@
 package com.codebrothers.services.customer.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -59,5 +60,9 @@ public class CustomerService {
         entity.setNome(obj.getNome());
         entity.setSobrenome(obj.getSobrenome());
         entity.setRg(obj.getRg());
+        entity.setCpf(obj.getCpf());
+        entity.setDataNascimento(obj.getDataNascimento());
+        entity.setAtivo(obj.getAtivo());
+        entity.setAtualizadoEm(LocalDateTime.now());
     }
 }
