@@ -9,29 +9,29 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.codebrothers.services.customer.entities.Costumer;
-import com.codebrothers.services.customer.repositories.CostumerRepository;
-import com.codebrothers.services.customer.service.exceptions.DataBaseException;
-import com.codebrothers.services.customer.service.exceptions.ResourceNotFoundException;
+import com.codebrothers.services.customer.entities.Customer;
+import com.codebrothers.services.customer.exceptions.DataBaseException;
+import com.codebrothers.services.customer.exceptions.ResourceNotFoundException;
+import com.codebrothers.services.customer.repositories.CustomerRepository;
 
 /*
  * Anotação para o framework identificar a classe como um serviço
  */
 @Service
-public class CostumerService {
+public class CustomerService {
     // Injeção da interface que faz parte do trabalho sujo com o banco
     @Autowired
-    private CostumerRepository repository;
+    private CustomerRepository repository;
     
-    public List<Costumer> findAll() {
+    public List<Customer> findAll() {
         return repository.findAll();
     }
     
-    public Costumer findById(Long id) {      
+    public Customer findById(Long id) {      
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
     
-    public Costumer insert(Costumer obj) {
+    public Customer insert(Customer obj) {
         return repository.save(obj);
     }
     
@@ -45,9 +45,9 @@ public class CostumerService {
         }
     }
     
-    public Costumer update(Long id, Costumer obj) {
+    public Customer update(Long id, Customer obj) {
         try {
-            Costumer entity = repository.getOne(id);
+            Customer entity = repository.getOne(id);
             updateData(entity, obj);
             return repository.save(entity);
         } catch (EntityNotFoundException e) {
@@ -55,7 +55,7 @@ public class CostumerService {
         }   
     }
 
-    private void updateData(Costumer entity, Costumer obj) {
+    private void updateData(Customer entity, Customer obj) {
         entity.setNome(obj.getNome());
         entity.setSobrenome(obj.getSobrenome());
         entity.setRg(obj.getRg());

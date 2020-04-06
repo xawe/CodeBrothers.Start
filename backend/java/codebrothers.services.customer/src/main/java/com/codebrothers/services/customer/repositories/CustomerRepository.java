@@ -3,7 +3,7 @@ package com.codebrothers.services.customer.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codebrothers.services.customer.entities.Costumer;
+import com.codebrothers.services.customer.entities.Customer;
 /*
  *  Essa JpaRepository faz o trabalho sujo pra nós, apos isso não já é 
  *  possivel fazer os CRUDs  do Customer sem sofrimento
@@ -12,6 +12,6 @@ import com.codebrothers.services.customer.entities.Costumer;
  *  mas no mundo dos javeiros parece q não usam
  */
 @Repository
-public interface CostumerRepository  extends JpaRepository<Costumer, Long> {
+public interface CustomerRepository  extends JpaRepository<Customer, Long> {
 
 }

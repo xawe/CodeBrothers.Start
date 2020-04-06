@@ -1,4 +1,4 @@
-package com.codebrothers.services.customer.service.exceptions;
+package com.codebrothers.services.customer.exceptions;
 /*
  * Classe de exception customizada retornar Not Found
  */

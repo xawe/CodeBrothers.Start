@@ -1,4 +1,4 @@
-package com.codebrothers.services.customer.service.handles;
+package com.codebrothers.services.customer.handles;
 
 import java.time.Instant;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.codebrothers.services.customer.entities.StandardError;
-import com.codebrothers.services.customer.service.exceptions.DataBaseException;
-import com.codebrothers.services.customer.service.exceptions.ResourceNotFoundException;
+import com.codebrothers.services.customer.exceptions.DataBaseException;
+import com.codebrothers.services.customer.exceptions.ResourceNotFoundException;
 /*
  * Funciona muito parecido com um interceptor, mas tem outra funcionalidade real
  * sempre q houver uma exception com as classe envolvidas  essa classe entre em ação
