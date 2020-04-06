@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.codebrothers.services.customer.entities.Customer;
-import com.codebrothers.services.customer.service.CustomerService;
+import com.codebrothers.services.customer.services.CustomerService;
 
 @RestController
 @RequestMapping(value = "/costumers")

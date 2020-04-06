@@ -1,4 +1,4 @@
-package com.codebrothers.services.customer.service;
+package com.codebrothers.services.customer.services;
 
 import java.util.List;
 
