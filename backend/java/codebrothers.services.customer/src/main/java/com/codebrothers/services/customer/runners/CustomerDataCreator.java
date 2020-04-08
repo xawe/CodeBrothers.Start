@@ -26,8 +26,13 @@ public class CustomerDataCreator implements CommandLineRunner{
 	
 	@Override																															
 	public void run(String... args) throws Exception {
+		//createCustomers(10);
+	}
+	
+	private void createCustomers(Integer qtd)
+	{
 		System.out.println("Iniciando a criação de registros de Customer");				
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < qtd; i++) {
 			Customer c = new Customer();
 			c.setNome(new Helpers().getRandomName());
 			c.setSobrenome(new Helpers().getRandomSecondName(2));	
@@ -37,7 +42,8 @@ public class CustomerDataCreator implements CommandLineRunner{
 			c.setCriadoEm(LocalDateTime.now());
 			c.setAtivo(true);
 			// Descomentar a linha abaixoi quando desejar criar o registro
-			//customerservice.insert(c);
-		}			
+			//customerservice.insert(c);			
+			System.out.println("Foram criados " + qtd + " clientes");
+		}
 	}
 }
