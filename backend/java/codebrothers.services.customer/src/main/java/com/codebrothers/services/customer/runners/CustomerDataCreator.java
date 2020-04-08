@@ -14,6 +14,13 @@ import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.services.CustomerService;
 import com.codebrothers.services.customer.runners.Helpers;
 
+/**
+ * Classe responsável por popular o banco de clientes com dados fake
+ * Para ativar, basta descomentar a linha "createCustomers(10)"
+ * Ao executar o microserviço, os registros serão criados
+ * @author xawe
+ *
+ */
 @Component
 public class CustomerDataCreator implements CommandLineRunner{
 
