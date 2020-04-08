@@ -19,43 +19,43 @@ import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.services.CustomerService;
 
 @RestController
-@RequestMapping(value = "/costumers")
+@RequestMapping(value = "/api/customers/v1")
 public class CustomerController {
    //  Injeção da classe que faz a parte de regras que forem necessarias
 	@Autowired
-	CustomerService costumerService;
+	CustomerService customerservice;
 
 	@GetMapping()
 	public ResponseEntity<List<Customer>> findAll() {
-		return ResponseEntity.ok().body(costumerService.findAll());
+		return ResponseEntity.ok().body(customerservice.findAll());
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Customer> findById(@PathVariable Long id) {
-		return ResponseEntity.ok().body(costumerService.findById(id));
+		return ResponseEntity.ok().body(customerservice.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Customer> insert(@RequestBody Customer costumer)
+	public ResponseEntity<Customer> insert(@RequestBody Customer customer)
 	{
-		costumer = costumerService.insert(costumer);
+		customer = customerservice.insert(customer);
 		// adiciona ao header uma url com ID do registro criado
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(costumer.getId()).toUri();
-		return ResponseEntity.created(uri).body(costumer);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
+		return ResponseEntity.created(uri).body(customer);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id)
 	{
-		costumerService.delete(id);
+		customerservice.delete(id);
 		
 		return ResponseEntity.noContent().build();
 	}
 	
     @PutMapping(value = "/{id}")
-	public ResponseEntity<Customer> update(@PathVariable Long id,  @RequestBody Customer costumer)
+	public ResponseEntity<Customer> update(@PathVariable Long id,  @RequestBody Customer customer)
 	{
-		costumer = costumerService.update(id, costumer);
-		return ResponseEntity.ok().body(costumer);
+		customer = customerservice.update(id, customer);
+		return ResponseEntity.ok().body(customer);
 	}
 }
