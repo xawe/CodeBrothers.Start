@@ -36,8 +36,8 @@ public class CustomerDataCreator implements CommandLineRunner{
 			c.setRg(new Helpers().getRandomRG());
 			c.setCriadoEm(LocalDateTime.now());
 			c.setAtivo(true);
-			customerservice.insert(c);
-		}
-				
+			// Descomentar a linha abaixoi quando desejar criar o registro
+			//customerservice.insert(c);
+		}			
 	}
 }
