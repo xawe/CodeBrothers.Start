@@ -94,16 +94,15 @@ Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Postgresql](https://www.postgresql.org/) - Database
+- [RabbitMQ](https://www.rabbitmq.com/) - Message Broker
+- [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) - Linguagem principal
+- [Spring-Boot](https://spring.io/projects/spring-boot) - Microservices Framework
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+- [@marcosjlima Marcos José de Lima](https://github.com/marcosjlima)
+- [@Xawe Alam Martins](https://github.com/xawe)
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
