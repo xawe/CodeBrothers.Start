@@ -3,6 +3,8 @@ package com.codebrothers.services.customer.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +38,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Customer> insert(@RequestBody Customer customer)
+	public ResponseEntity<Customer> insert(@RequestBody @Valid Customer customer)
 	{
 		customer = customerservice.insert(customer);
 		// adiciona ao header uma url com ID do registro criado
