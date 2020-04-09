@@ -31,7 +31,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+O Objetivo do projeto é simular um sistema de Cobrança via Tag, implementando cenários reais,  identificando desafios técnicos e propondo soluções para eles.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -39,11 +39,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+Para rodar o projeto, sera necessário ter instalado e configurado
 
-```
-Give examples
-```
+Docker
+JDK 11
+Maven
+
 
 ### Installing
 
