@@ -10,7 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;;
 
 @Entity
 @Table(name = "tb_customer")
@@ -21,16 +25,33 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(max = 30, message = "Quantidade de caracteres do Nome acima do permitido!")
+    @NotBlank(message = "nome não pode ser em branco!")
     @Column(name = "nome", length = 30)
     @NotNull
     private String nome;
 
+    @Size(max = 50, message = "Quantidade de caracteres do Sobrenome acima do permitido!")
     @Column(name = "sobrenome", length = 50)
     private String sobrenome;
 
+    @Size(max = 12, message = "Quantidade de digitos do RG acima do permitido!")
     @Column(name = "rg", length = 12)
     private String rg;
 
+    @Pattern(regexp = "([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}-[0-9]{2})|([0-9]{11})")
+    @Pattern(regexp = "^(?:(?!000\\.?000\\.?000-?00).)*$")
+    @Pattern(regexp = "^(?:(?!111\\.?111\\.?111-?11).)*$")
+    @Pattern(regexp = "^(?:(?!222\\.?222\\.?222-?22).)*$")
+    @Pattern(regexp = "^(?:(?!333\\.?333\\.?333-?33).)*$")
+    @Pattern(regexp = "^(?:(?!444\\.?444\\.?444-?44).)*$")
+    @Pattern(regexp = "^(?:(?!555\\.?555\\.?555-?55).)*$")
+    @Pattern(regexp = "^(?:(?!666\\.?666\\.?666-?66).)*$")
+    @Pattern(regexp = "^(?:(?!777\\.?777\\.?777-?77).)*$")
+    @Pattern(regexp = "^(?:(?!888\\.?888\\.?888-?88).)*$")
+    @Pattern(regexp = "^(?:(?!999\\.?999\\.?999-?99).)*$")
+    @NotBlank
+    @Size(min = 11, max = 14, message = "Quantidade de digitos do CPF inválido!")
     @Column(name = "cpf", length = 14)
     @NotNull
     private String cpf;
@@ -39,6 +60,7 @@ public class Customer implements Serializable {
     @NotNull
     private Boolean ativo;
 
+    //@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\-](0?[1-9]|1[012])[\\-][0-9]{4}$")
     @Column(name = "datanascimento")
     private LocalDate dataNascimento;
 
@@ -48,6 +70,11 @@ public class Customer implements Serializable {
 
     @Column(name = "atualizadoem")
     private LocalDateTime atualizadoEm;
+
+    @Email
+    @Size(max = 50, message = "Quantidade de caracteres do Email acima do permitido!")
+    @Column(name = "email", length = 50)
+    private String email;
 
     public String getNome() {
         return nome;
@@ -105,12 +132,20 @@ public class Customer implements Serializable {
         this.criadoEm = criadoEm;
     }
 
-    public LocalDateTime  getAtualizadoEm() {
+    public LocalDateTime getAtualizadoEm() {
         return atualizadoEm;
     }
 
     public void setAtualizadoEm(LocalDateTime atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Customer() {
