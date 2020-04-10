@@ -26,6 +26,14 @@ docker build -t codebrothers.custumer .
 - Container
 -- Iniciando o container a partir da imagem gerada:
 
-```
-docker run --name codebrothers.custumer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 codebrothers.custumer -d
-```
+
+
+### Instruções para Container
+
+    - Para criar uma imagem
+        
+        docker build -t codebrothers-customer:tag .
+
+    - Para rodar a imagem
+
+        docker run --name codebrothers.customer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 -p 5432 codebrothers-customer -d
