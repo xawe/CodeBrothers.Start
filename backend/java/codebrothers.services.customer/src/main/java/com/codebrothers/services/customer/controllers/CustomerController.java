@@ -21,7 +21,7 @@ import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.services.CustomerService;
 
 @RestController
-@RequestMapping(value = "/api/customers/v1")
+@RequestMapping(value = "/api/customers/v1", produces = "application/json;charset=UTF-8;")
 public class CustomerController {
    //  Injeção da classe que faz a parte de regras que forem necessarias
 	@Autowired
