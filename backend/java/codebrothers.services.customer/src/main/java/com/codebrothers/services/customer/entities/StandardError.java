@@ -26,7 +26,7 @@ public class StandardError implements Serializable {
 		this.path = path;
 	}
 
-	public Instant getTimestamp() {
+    public Instant getTimestamp() {
 		return timestamp;
 	}
 
@@ -66,4 +66,12 @@ public class StandardError implements Serializable {
 		this.path = path;
 	}
 
+    @Override
+    public String toString() {
+        return "{\"timestamp\":\"" + timestamp + 
+                "\", \"status\":\"" + status + 
+                "\", \"error\":\"" + error + 
+                "\", \"message\":\""+ message + 
+                "\", \"path\":\"" + path + "\"}";
+    }
 }
