@@ -5,15 +5,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.codebrothers.services.customer.Interceptor.CodeBrothersAutenticacaoInterceptor;
-import com.codebrothers.services.customer.Interceptor.CodeBrothersLogInterceptor;
+import com.codebrothers.services.customer.interceptors.CustomerAutenticacaoInterceptor;
+import com.codebrothers.services.customer.interceptors.CustomerLogInterceptor;
 
+// Responsável po realizar o registros dos interceptors
 @Configuration
-public class CodeBrothersConfiguration implements WebMvcConfigurer  {
+public class CustomerConfiguration implements WebMvcConfigurer  {
     @Autowired
-    CodeBrothersLogInterceptor logInterceptor;
+    CustomerLogInterceptor logInterceptor;
     @Autowired
-    CodeBrothersAutenticacaoInterceptor autenticacaoInterceptor;
+    CustomerAutenticacaoInterceptor autenticacaoInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
