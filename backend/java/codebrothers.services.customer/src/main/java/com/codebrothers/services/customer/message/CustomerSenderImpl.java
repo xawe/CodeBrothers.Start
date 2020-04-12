@@ -25,10 +25,12 @@ public class CustomerSenderImpl implements CustomerSender{
 	public Boolean SendCreatedMessage(Customer customer) {
 		
 		try {			
-			//utiliza o rabbitTemplate para envio da mensagem ao tópico ( exchange ) "codebrothers.customer.created"
-			rabbitTemplate.convertAndSend(properties.getExchangeCustomerCreated(),
-					properties.getExchangeSubjectCustomerCreated(),
-					customer);
+			if(properties.getUseMessageBroker().equals("s")) {
+				//utiliza o rabbitTemplate para envio da mensagem ao tópico ( exchange ) "codebrothers.customer.created"
+				rabbitTemplate.convertAndSend(properties.getExchangeCustomerCreated(),
+						properties.getExchangeSubjectCustomerCreated(),
+						customer);
+			}
 		}
 		catch(Exception e) {
 			return false;
