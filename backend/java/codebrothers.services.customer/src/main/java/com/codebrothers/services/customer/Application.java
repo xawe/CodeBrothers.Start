@@ -1,31 +1,28 @@
 package com.codebrothers.services.customer;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+
+import com.codebrothers.services.customer.infrastructure.PropertiesLoader;
 
 @SpringBootApplication
 public class Application {
 
-	static final String topicExchangeName = "CustomerCreatedExchange";
-	static final String queueName = "CustomerCreated";
+	@Autowired
+	PropertiesLoader properties;
 	
 	/*
 	 * retorna um instacia da fila
 	 */
 	@Bean
 	Queue queue() {
-		return new Queue(queueName, false);		
+		return new Queue(properties.getQueueCustomerCreated(), false);		
 	}
 	
 	/*
@@ -33,16 +30,25 @@ public class Application {
 	 */
 	@Bean
 	TopicExchange exchange() {
-		return new TopicExchange(topicExchangeName);
+		return new TopicExchange(properties.getExchangeCustomerCreated());
 	}
 	
 	/*
-	 *Cria a ligação entre o topico e a fila quando o assunto do do topico contiver codebrothers.customer. 
+	 *Cria a ligação entre o topico e a fila quando o assunto do do topico contiver codebrothers.customer.
+	 *OBS: Este item é desnecessário ao enviar mensagens, deixando ligado apenas para fins ilustrativos
+	 *No entanto, foi incluido a titulo de modelo.
+	 *Esse bind deve ser feito por quem deseja "obter" os itens de uma exchange, sendo o responsável
+	 *por indicar a Exchange para enviar o registro para a fila especificada no bind.
+	 *Partindo do modelo AMQP:
+	 *		Cada Consumer tem sua propria fila
+	 *		O Consumer assina uma exchange
+	 *		O Consumer efetua o bind para sua fila
+	 *		A Exchange envia uma copia da mensagem a fila especificada
 	 */
-	/*@Bean
+	@Bean
 	Binding binding(Queue queue, TopicExchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with("codebrothers.customer.#");	
-	}*/
+		return BindingBuilder.bind(queue).to(exchange).with(properties.getExchangeSubjectCustomerBase()+".#");	
+	}
 	/*
 	@Bean
 	  SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
