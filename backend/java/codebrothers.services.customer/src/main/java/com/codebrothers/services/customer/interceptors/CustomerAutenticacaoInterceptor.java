@@ -3,18 +3,18 @@ package com.codebrothers.services.customer.interceptors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
-    public Logger log = LogManager.getLogger(this);
-
+    
     public CustomerAutenticacaoInterceptor() {
         super();
     }

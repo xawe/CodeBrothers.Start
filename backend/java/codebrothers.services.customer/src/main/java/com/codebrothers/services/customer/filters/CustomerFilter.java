@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
-public class CustomerLogFilter implements Filter {
+public class CustomerFilter implements Filter {
     public Logger log = LogManager.getLogger(this);
 
     public void init(FilterConfig filterConfig) {

@@ -1,7 +1,5 @@
 package com.codebrothers.services.customer.adapters;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -13,11 +11,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.google.gson.Gson;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @ControllerAdvice
 public  class CustomerResponseBodyAdvice  implements ResponseBodyAdvice<Object>{
     @Value("${spring.application.name}")
     String appName;
-    public Logger log = LogManager.getLogger(this);
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
