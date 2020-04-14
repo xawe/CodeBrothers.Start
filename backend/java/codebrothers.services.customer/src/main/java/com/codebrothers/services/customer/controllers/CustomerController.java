@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.codebrothers.services.customer.entities.Customer;
+import com.codebrothers.services.customer.message.CustomerSender;
 import com.codebrothers.services.customer.services.CustomerService;
 
 @RestController
@@ -26,6 +27,9 @@ public class CustomerController {
    //  Injeção da classe que faz a parte de regras que forem necessarias
 	@Autowired
 	CustomerService customerservice;
+	
+	@Autowired
+	CustomerSender customerSender;
 
 	@GetMapping()
 	public ResponseEntity<List<Customer>> findAll() {
@@ -41,8 +45,10 @@ public class CustomerController {
 	public ResponseEntity<Customer> insert(@RequestBody @Valid Customer customer)
 	{
 		customer = customerservice.insert(customer);
+		//Posta o novo Customer Criado no messagebroker
+		customerSender.SendCreatedMessage(customer);
 		// adiciona ao header uma url com ID do registro criado
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();		
 		return ResponseEntity.created(uri).body(customer);
 	}
 	
