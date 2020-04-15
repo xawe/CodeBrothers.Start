@@ -20,11 +20,19 @@ Micro serviço responsável pelo cadastrado do Cliente.
  -- Gerando a imagem com uma tag e repository pra imagem: 
 
 ```
-docker build -t codebrothers.custumer .
+docker build -t codebrothers.customer .
+
 ```
 
 - Container
+
 -- Iniciando o container a partir da imagem gerada:
+
+
+```
+docker run --name codebrothers.customer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 codebrothers.customer -d
+
+```
 
 
 

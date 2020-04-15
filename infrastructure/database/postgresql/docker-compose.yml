@@ -6,9 +6,11 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - 'postgresql_data:/var/lib/postgresql/data'
+      - /database/postgresql/data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "CodeBrother@2020"
+      PGDATA: /var/lib/postgresql/data/report
+
     networks:
       - postgres-network
 
@@ -23,6 +25,18 @@ services:
       - postgresql-code-brother
     networks:
       - postgres-network
+    
+  rabbitmq-code-brother:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - 'rabbitmq_data:/data'
+    depends_on:
+      - postgresql-code-brother
+    networks:
+      - postgres-network
 
 networks: 
   postgres-network:
@@ -30,4 +44,6 @@ networks:
 
 volumes:
   postgresql_data:
+    driver: local
+  rabbitmq_data:
     driver: local
