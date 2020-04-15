@@ -2,7 +2,7 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 
 WORKDIR /opt/app
 
-EXPOSE 8080 8081 5432
+EXPOSE 8080 8081
 
 ARG JAR_FILE=target/codebrothers.services.customer-0.0.1-SNAPSHOT.war
 

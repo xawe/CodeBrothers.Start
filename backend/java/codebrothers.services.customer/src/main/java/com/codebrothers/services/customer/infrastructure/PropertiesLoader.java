@@ -5,8 +5,7 @@ public interface PropertiesLoader {
 	/*
 	 * FeatureToggle para definir o uso de comunicação via messageria
 	 */
-	public String getUseMessageBroker();
-	
+    public String getUseMessageBroker();
 	/*
 	 * Propriedade indicando o nome da exchange para enviar a mensagem de customer criado
 	 */

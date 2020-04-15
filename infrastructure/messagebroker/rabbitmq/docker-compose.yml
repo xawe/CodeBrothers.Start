@@ -1,12 +1,19 @@
 version: "3"
+
 services:
- rabbitmq:
+  rabbitmq-code-brother:
     image: "rabbitmq:3-management"
     ports:
       - "5672:5672"
       - "15672:15672"
     volumes:
       - 'rabbitmq_data:/data'
+    networks:
+      - postgres-network
+
+networks: 
+  postgres-network:
+    driver: bridge
 
 volumes:
   rabbitmq_data:
