@@ -33,6 +33,7 @@ public class CustomerSenderImpl implements CustomerSender{
 			}
 		}
 		catch(Exception e) {
+			System.out.println("Erro ao tentar enviar dados ao message broker >>> " + e.getMessage() + " >> " +e.getStackTrace());
 			return false;
 		}
 		
