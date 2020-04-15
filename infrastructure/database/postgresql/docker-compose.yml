@@ -6,9 +6,11 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - 'postgresql_data:/var/lib/postgresql/data'
+      - /database/postgresql/data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "CodeBrother@2020"
+      PGDATA: /var/lib/postgresql/data/report
+
     networks:
       - postgres-network
 
