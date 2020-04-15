@@ -23,8 +23,7 @@ public class CustomerLogInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
        
-        log.info("Request Method: {} - URI: {} -  Local Port: {} - QueryString: {}",
-                request.getMethod(), request.getRequestURI(), request.getLocalPort(), request.getQueryString());
+        log.info("Request Method: {} - URI: {} -  Local Port: {} - QueryString: {}", request.getMethod(), request.getRequestURI(), request.getLocalPort(), request.getQueryString());
         
         return true;
     }

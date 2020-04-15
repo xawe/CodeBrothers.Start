@@ -2,7 +2,6 @@ package com.codebrothers.services.customer.adapters;
 
 import java.lang.reflect.Type;
 
-import org.slf4j.MDC;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
