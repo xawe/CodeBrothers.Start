@@ -1,19 +1,12 @@
 package com.codebrothers.services.customer.infrastructure.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
-
-import com.codebrothers.services.customer.infrastructure.PropertiesLoader;
-import com.codebrothers.services.customer.infrastructure.PropertiesLoaderImpl;
 
 
 @Component
 class PropertiesLoaderTest {
 
-	
+	/*
 	PropertiesLoader pl;
 	
 	@BeforeEach
@@ -55,5 +48,6 @@ class PropertiesLoaderTest {
 		assertEquals(valor,  "codebrothers.customer");
 		
 	}
+	*/
 
 }
