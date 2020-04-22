@@ -19,29 +19,13 @@ Micro serviço responsável pelo cadastrado do Cliente.
  - Docker
  -- Gerando a imagem com uma tag e repository pra imagem: 
 
-```
-docker build -t codebrothers.customer .
-
-```
-
-- Container
-
--- Iniciando o container a partir da imagem gerada:
-
-
-```
-docker run --name codebrothers.customer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 codebrothers.customer -d
-
-```
-
-
 
 ### Instruções para Container
 
     - Para criar uma imagem
         
-        docker build -t codebrothers-customer:tag .
+        docker build -t codebrothers.customer .
 
     - Para rodar a imagem
 
-        docker run --name codebrothers.customer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 -p 5432 codebrothers-customer -d
+        docker run --name codebrothers.customer --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 codebrothers.customer -d
