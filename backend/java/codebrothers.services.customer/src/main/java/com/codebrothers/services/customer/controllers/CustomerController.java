@@ -21,6 +21,8 @@ import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.message.CustomerSender;
 import com.codebrothers.services.customer.services.CustomerService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/api/customers/v1", produces = "application/json;charset=UTF-8;")
 public class CustomerController {
@@ -32,16 +34,19 @@ public class CustomerController {
 	CustomerSender customerSender;
 
 	@GetMapping()
+	@ApiOperation(value = "View a list of available Customer", response = Customer.class, responseContainer = "List")
 	public ResponseEntity<List<Customer>> findAll() {
 		return ResponseEntity.ok().body(customerservice.findAll());
 	}
 
 	@GetMapping(value = "/{id}")
+	@ApiOperation(value = "Fetch the customer specified in the path", response = Customer.class)
 	public ResponseEntity<Customer> findById(@PathVariable Long id) {
 		return ResponseEntity.ok().body(customerservice.findById(id));
 	}
 	
 	@PostMapping
+	@ApiOperation(value = "Create Customer ", response = Customer.class)
 	public ResponseEntity<Customer> insert(@RequestBody @Valid Customer customer)
 	{
 		customer = customerservice.insert(customer);
@@ -53,6 +58,7 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping(value = "/{id}")
+	@ApiOperation(value = "Delete Customer ", response = Void.class)
 	public ResponseEntity<Void> delete(@PathVariable Long id)
 	{
 		customerservice.delete(id);
@@ -61,6 +67,7 @@ public class CustomerController {
 	}
 	
     @PutMapping(value = "/{id}")
+    @ApiOperation(value = "Update Customer ", response = Customer.class)
 	public ResponseEntity<Customer> update(@PathVariable Long id,  @RequestBody Customer customer)
 	{
 		customer = customerservice.update(id, customer);
