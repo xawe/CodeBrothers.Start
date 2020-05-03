@@ -133,15 +133,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
   }  
   String service = '/api/customers/v1/1';
   final endpoint = defaultAddres + service;
-  final response = await http.get(endpoint);
-
-  if(response.statusCode == 200){   
+  try {
+    final response = await http.get(endpoint);  
+    if(response.statusCode == 200){   
       _showDialog("Usuário conectado com sucesso");             
       return Customer.fromJson(json.decode(response.body));    
     }else{
       _showDialog("Ocorreu um erro. Verifique os dados do usuário");             
       throw Exception('Falha ao obter dados do Customer');
     }
+  } catch (e) {
+    _showDialog("Ocorreu um erro ao obter informações do serviço  >> " + e.message);
+  }
   }
 }
 
