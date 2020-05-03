@@ -1,16 +1,17 @@
 # codebrothers_tagsystem
 
-A new Flutter project.
+Teste de interface usando Flutter para o TagSystem.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+O TagSystem deverá promover funcionalidades de autenticação e check-in por geolcalização ( um botão fisico para testar)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Para criar o apk
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    -- alterar a versão no arquivo pubspec.yaml - alterar sempre o ultimo numero antes do + também depois do +
+        
+        --  Exemplo  : version: 1.1.1+3
+
+    -- flutter clean && flutter build apk --release
