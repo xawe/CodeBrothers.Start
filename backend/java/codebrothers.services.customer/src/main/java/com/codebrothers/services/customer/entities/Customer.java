@@ -1,5 +1,6 @@
 package com.codebrothers.services.customer.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -30,8 +31,13 @@ import lombok.Setter;;
 @NoArgsConstructor
 @Getter @Setter 
 @EqualsAndHashCode
-public class Customer {
-    @ApiModelProperty(notes = "Id of Customer", dataType = "Long")
+public class Customer implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@ApiModelProperty(notes = "Id of Customer", dataType = "Long")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
