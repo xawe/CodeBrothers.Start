@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.codebrothers.services.auth.entities.User;
+import com.codebrothers.services.auth.infrastructure.SecurityEncoder;
 import com.codebrothers.services.auth.services.AuthService;
 import com.codebrothers.services.auth.services.UserService;
 
@@ -28,15 +29,13 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-	   
-	//Pre Authorize habilitado para testes. Deverá ser desabilutado assim que for implementado JWT
-	
-    
+	   	
+	//Pre Authorize habilitado para testes. Deverá ser desabilutado assim que for implementado JWT	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping()
     @ApiOperation(value = "Create user ", response = User.class)
 	public ResponseEntity<User> insert(@RequestBody @Valid User user)
-	{
+	{		
 		user = service.insert(user);
 		//		
 		// adiciona ao header uma url com ID do registro criado

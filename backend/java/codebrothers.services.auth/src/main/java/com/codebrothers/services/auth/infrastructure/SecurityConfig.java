@@ -18,8 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {  
 	
 	@Autowired
-	SecurityEncoder encoder;
-	
+	SecurityEncoder encoder;	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 	throws Exception {
@@ -46,9 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .and()
           .csrf().disable();
     }
-    
-  
-    
 	/*
     protected void configure(final HttpSecurity http) throws Exception {
     	

@@ -51,9 +51,8 @@ public class User {
     private String email;
 	
 	@EqualsAndHashCode.Exclude
-    @ApiModelProperty(notes = "Password of User", dataType = "String", required = false)
-    @Email
-    @Size(max = 250, message = "Quantidade de caracteres do Password acima do permitido!")
+    @ApiModelProperty(notes = "Password of User", dataType = "String", required = false)    
+    @Size(max = 60, message = "Quantidade de caracteres do Password acima do permitido!")
     @Column(name = "password", length = 250)
     private String password;
 }
