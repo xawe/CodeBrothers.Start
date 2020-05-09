@@ -40,3 +40,13 @@ Micro serviço responsável pelo autenticação.
 
  - Porta padrão: 8082
  - Docker
+
+ ### Instruções para Container
+
+    - Para criar uma imagem
+        
+        docker build -t codebrothers.auth .
+
+    - Para rodar a imagem
+
+        docker run --name codebrothers.auth --network postgresql_postgres-network -p 8080:8080 -p 8081:8081 codebrothers.auth -d
