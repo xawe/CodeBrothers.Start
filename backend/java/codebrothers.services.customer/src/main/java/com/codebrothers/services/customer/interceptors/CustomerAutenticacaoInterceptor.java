@@ -8,9 +8,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
+//@Slf4j
 @Component
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {

@@ -31,7 +31,8 @@ public class CustomerDataCreator implements CommandLineRunner{
 		//createCustomers(10);
 	}
 	
-	private void createCustomers(Integer qtd)
+	@SuppressWarnings("unused")
+    private void createCustomers(Integer qtd)
 	{
 		System.out.println("Iniciando a criação de registros de Customer");				
 		for (int i = 0; i < qtd; i++) {
