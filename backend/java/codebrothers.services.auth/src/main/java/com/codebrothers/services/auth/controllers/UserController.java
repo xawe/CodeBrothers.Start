@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.codebrothers.services.auth.entities.User;
 import com.codebrothers.services.auth.services.AuthService;
+import com.codebrothers.services.auth.services.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -26,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 public class UserController {
 
 	@Autowired
-	AuthService service;
+	UserService service;
 	   
 	//Pre Authorize habilitado para testes. Deverá ser desabilutado assim que for implementado JWT
 	

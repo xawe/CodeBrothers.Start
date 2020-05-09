@@ -6,9 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;  
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;  
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 /**
@@ -19,27 +17,38 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)  
 public class SecurityConfig extends WebSecurityConfigurerAdapter {  
 	
+	@Autowired
+	SecurityEncoder encoder;
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 	throws Exception {
-	auth.
-	inMemoryAuthentication()
-	//necessário uso do {noop} para evitar erro ao ler o password
-	.withUser("user").password("{noop}user").roles("USER").and()
-	.withUser("admin").password("{noop}admin").roles("USER","ADMIN");
+	
+		//necessário identificar o password com o id {bcrypt}
+		//user {noop} para plain text sem criptografica
+		PasswordEncoder pe = encoder.getPasswordEncoder();
+		String adminPass = "{bcrypt}" + pe.encode("admin");
+		String userPass = "{bcrypt}" + pe.encode("user");
+		
+		auth.
+		inMemoryAuthentication()
+		.withUser("user").password(userPass).roles("USER").and()
+		.withUser("admin").password(adminPass).roles("USER","ADMIN");
 
 	}
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    http    
+    http        		
           .authorizeRequests()
           .antMatchers("/api/user/v1/**").hasAnyRole("ADMIN","USER").and()
           //.antMatchers("/rest/**").hasAnyRole("ADMIN","USER").and()         
           .httpBasic()
           .and()
-          .csrf().disable();   
+          .csrf().disable();
     }
+    
+  
+    
 	/*
     protected void configure(final HttpSecurity http) throws Exception {
     	
