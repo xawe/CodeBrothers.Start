@@ -32,6 +32,11 @@ Micro serviço responsável pelo autenticação.
  - Endpoints disponíveis
 
  1. /api/auth/v1   POST
+    payload
+    {
+    	"name":"teste",
+    	"email":"teste@teste.com"
+    }
 
  - Porta padrão: 8082
  - Docker
