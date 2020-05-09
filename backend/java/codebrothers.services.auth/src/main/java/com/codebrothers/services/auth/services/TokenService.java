@@ -44,7 +44,8 @@ public class TokenService implements Serializable{
     }
     
     // Validate token
-    public Boolean validateToken(String token, User userDetails) {
+    public Boolean validateToken(String token) {
+        token = token.replace("Bearer ", "");
         return (!isTokenExpired(token));
     }
     // for retrieveing any information from token we will need the secret key
