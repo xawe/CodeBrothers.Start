@@ -36,8 +36,7 @@ public class Helpers {
 		names.add("Marcos");
 		names.add("Daniel");
 		names.add("Beth");
-		
-		Random r = new Random();
+
 		Integer i = getRandomNumberInRange(0, names.size()-1);
 		return names.get(i);
 	}	
@@ -57,7 +56,6 @@ public class Helpers {
 		names.add("Oliveira");
 		names.add("Cheira Bife");		
 		
-		Random r = new Random();
 		String retorno = "";
 		for (int i = 0; i < qtd; i++) {			
 			Integer indice = getRandomNumberInRange(0, names.size() -1);					
