@@ -54,11 +54,15 @@ Micro serviço responsável pelo autenticação.
 
  2. /api/user/v1/{nome}/{email}     GET  Consulta de usuário por nome e e-mail
 
- 3. /api/user/v1/    POST      Criação de usuário 
+ 3. /api/user/v1/{id}     GET  Consulta de usuário por id
 
- 4. /api/user/v1/{id}    DELETE  Remoção de usuário por id
+ 4. /api/user/v1/     GET  Lista todos os usuários
 
- 5. /api/user/v1/{id}   PUT      Atualização de usuário
+ 5. /api/user/v1/    POST      Criação de usuário 
+
+ 6. /api/user/v1/{id}    DELETE  Remoção de usuário por id
+
+ 7. /api/user/v1/{id}   PUT      Atualização de usuário
     payload    
     {
         "name": "Teste update",
