@@ -1,8 +1,13 @@
 package com.codebrothers.services.auth.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +62,32 @@ public class UserService {
     		obj.setPassword(dataEncryptor.getEncryptedData(obj.getPassword()));
     	}
     	return userRepo.save(obj);
+    }
+    
+    public void delete(Long id) {
+        try {
+            userRepo.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new com.codebrothers.services.auth.exceptions.DataBaseException(e.getMessage());
+        }
+    }
+    
+    public User update(Long id, User obj) {
+        try {
+            User entity = userRepo.getOne(id);
+            updateData(entity, obj);
+            return userRepo.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }   
+    }
+
+    private void updateData(User entity, User obj) {    	
+        entity.setName(obj.getName());
+        entity.setPassword(dataEncryptor.getEncryptedData(obj.getPassword()));
+        entity.setEmail(obj.getEmail());        
     }
     
 }

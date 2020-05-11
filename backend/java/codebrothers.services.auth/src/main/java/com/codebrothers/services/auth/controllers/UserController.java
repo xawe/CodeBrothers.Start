@@ -6,10 +6,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,15 +42,33 @@ public class UserController {
 	}
 		
     @GetMapping("/{name}/{email}")
-    @ApiOperation(value = "API for authentication", response = Object.class, responseContainer = "List")
+    @ApiOperation(value = "Busca de usuário por nome e e-mail", response = Object.class, responseContainer = "List")
     public ResponseEntity<?> findUser(@PathVariable String name, @PathVariable String email) {    	    
         return ResponseEntity.ok().body(service.findUserByNameAndEmail(name, email));
     }
     
-    //@GetMapping()
 	@PostMapping("/findByNameEmail")
-    @ApiOperation(value = "API for authentication", response = Object.class, responseContainer = "List")
+    @ApiOperation(value = "Busca de usuários por nome e email usando o Body do post", response = Object.class, responseContainer = "List")
     public ResponseEntity<?> login(@RequestBody @Valid User user) {    	    
         return ResponseEntity.ok().body(service.findUserByNameAndEmail(user));
     }
+	
+
+	@DeleteMapping(value = "/{id}")
+	@ApiOperation(value = "Delete User ", response = Void.class)
+	public ResponseEntity<Void> delete(@PathVariable Long id)
+	{
+		service.delete(id);		
+		return ResponseEntity.ok().build();
+	}
+	
+    @PutMapping(value = "/{id}")
+    @ApiOperation(value = "Update User", response = User.class)
+	public ResponseEntity<User> update(@PathVariable Long id,  @RequestBody User user)
+	{
+		user = service.update(id, user);
+		return ResponseEntity.ok().body(user);
+	}
+	
+	
 }
