@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.codebrothers.services.auth.entities.User;
 import com.codebrothers.services.auth.repositories.UserRepository;
+import com.codebrothers.services.auth.security.DataEncryptor;
 
 @Service
 public class UserService {
@@ -13,8 +14,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
-	//@Autowired
-	//SecurityEncoder encoder;
+	@Autowired
+	private DataEncryptor dataEncryptor; 
 	
     public User findUser() {
         return new User();
@@ -22,7 +23,9 @@ public class UserService {
     
 
     public User insert(User obj) {
-    	
+    	if(obj.getPassword() != null) {
+    		obj.setPassword(dataEncryptor.getEncryptedData(obj.getPassword()));
+    	}
     	return userRepo.save(obj);
     }
     

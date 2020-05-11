@@ -7,8 +7,8 @@ import javax.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.codebrothers.services.security.DataEncryptor;
-import com.codebrothers.services.security.DataEncryptorImpl;
+import com.codebrothers.services.auth.security.DataEncryptor;
+import com.codebrothers.services.auth.security.DataEncryptorImpl;
 
 import at.favre.lib.bytes.Bytes;
 import at.favre.lib.crypto.bcrypt.BCrypt;

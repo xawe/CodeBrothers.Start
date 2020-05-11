@@ -1,5 +1,7 @@
-package com.codebrothers.services.security;
+package com.codebrothers.services.auth.security;
 
+
+import org.springframework.stereotype.Component;
 
 import at.favre.lib.bytes.Bytes;
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -8,6 +10,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
  * Classe responsável por criptografar (na verdade obter um hash ) da string  
  *
  */
+@Component
 public class DataEncryptorImpl implements DataEncryptor{
 	
 	/**

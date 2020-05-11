@@ -1,4 +1,4 @@
-package com.codebrothers.services.security;
+package com.codebrothers.services.auth.security;
 
 /**
  * Classe responsável por criptografar (na verdade obter um hash ) da string  
