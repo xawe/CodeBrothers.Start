@@ -12,9 +12,16 @@ public class AuthService {
     @Autowired
     TokenService  jwtToken;
 
+    @Autowired
+    private UserService userService;
 
     public String findUser(User user) {
-        return jwtToken.generateToken(user);
-
+    	
+    	//validando se o usuário está cadastrado no banco
+    	User u = userService.findUserByNameAndEmail(user);
+    	if(u != null) {
+    		return jwtToken.generateToken(user);
+    	}
+    	return jwtToken.generateToken(user);
     }    
 }

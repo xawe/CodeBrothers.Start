@@ -20,7 +20,8 @@ public class DataEncryptorImpl implements DataEncryptor{
 	 */
 	public String getEncryptedData(String str) {
 			
-		byte[] salt = new byte[]{0x5E, (byte) 0xFA, (byte) 0xA7, (byte) 0xA3, (byte) 0xD9, (byte) 0xDF, 0x6E, (byte) 0x7F, (byte) 0x8C, 0x78, (byte) 0x96, (byte) 0xB1, 0x7B, (byte) 0xA7, 0x6E, 0x01};
+		//byte[] salt = new byte[]{0x5E, (byte) 0xFA, (byte) 0xA7, (byte) 0xA3, (byte) 0xD9, (byte) 0xDF, 0x6E, (byte) 0x7F, (byte) 0x8C, 0x78, (byte) 0x96, (byte) 0xB1, 0x7B, (byte) 0xA7, 0x6E, 0x01};
+		byte[] salt = Bytes.random(16).array();
 		BCrypt.Hasher bCrypt = BCrypt.withDefaults();
 		//cost = 4 indica qual é o custo para executar o hash - max 31
 		//quanto maior o custo, maior o tempo de processamento, porém maior a segurança		
