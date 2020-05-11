@@ -39,6 +39,33 @@ Micro serviço responsável pelo autenticação.
     }
  2. /api/auth/v1/validate   POST
 
+
+ - Endoints disponíveis para tratar usuário
+
+ 1. /api/user/v1/findByNameEmail    POST    
+ 
+    Consulta de usuário usando body - Alguns frameworks em versões antigas podem não ter implementado GET com passagem de dados via BODY, por isso este método
+
+    payload
+    {
+        "name":"teste",
+    	"email":"teste@teste.com"
+    }
+
+ 2. /api/user/v1/{nome}/{email}     GET  Consulta de usuário por nome e e-mail
+
+ 3. /api/user/v1/    POST      Criação de usuário 
+
+ 4. /api/user/v1/{id}    DELETE  Remoção de usuário por id
+
+ 5. /api/user/v1/{id}   PUT      Atualização de usuário
+    payload    
+    {
+        "name": "Teste update",
+        "email": "up@date.com",
+        "password": "12345"
+    }
+
  - Porta padrão: 8082
  - Docker
 

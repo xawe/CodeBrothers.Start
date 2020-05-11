@@ -56,6 +56,13 @@ public class UserService {
         throw new ResourceNotFoundException("User : " + name +" | Email : " + email);
     }
     
+    public List<User> findAll() {
+        return userRepo.findAll();
+    }
+    
+    public User findById(Long id) {      
+        return userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+    }
 
     public User insert(User obj) {
     	if(obj.getPassword() != null) {

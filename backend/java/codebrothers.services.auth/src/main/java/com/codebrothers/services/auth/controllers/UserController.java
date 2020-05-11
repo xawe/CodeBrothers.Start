@@ -1,6 +1,7 @@
 package com.codebrothers.services.auth.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -52,6 +53,18 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody @Valid User user) {    	    
         return ResponseEntity.ok().body(service.findUserByNameAndEmail(user));
     }
+	
+	@GetMapping()
+	@ApiOperation(value = "View a list of available User", response = User.class, responseContainer = "List")
+	public ResponseEntity<List<User>> findAll() {
+		return ResponseEntity.ok().body(service.findAll());
+	}
+
+	@GetMapping(value = "/{id}")
+	@ApiOperation(value = "Fetch the User specified in the path", response = User.class)
+	public ResponseEntity<User> findById(@PathVariable Long id) {
+		return ResponseEntity.ok().body(service.findById(id));
+	}
 	
 
 	@DeleteMapping(value = "/{id}")
