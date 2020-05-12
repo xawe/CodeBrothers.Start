@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.codebrothers.services.auth.entities.User;
-import com.codebrothers.services.auth.services.AuthService;
 import com.codebrothers.services.auth.services.UserService;
 
 import io.swagger.annotations.ApiOperation;
