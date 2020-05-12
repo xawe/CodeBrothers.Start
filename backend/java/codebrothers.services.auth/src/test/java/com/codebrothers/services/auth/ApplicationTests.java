@@ -1,20 +1,15 @@
 package com.codebrothers.services.auth;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import javax.validation.constraints.AssertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.codebrothers.services.auth.security.DataEncryptor;
 import com.codebrothers.services.auth.security.DataEncryptorImpl;
 
 import at.favre.lib.bytes.Bytes;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import at.favre.lib.crypto.bcrypt.BCryptFormatter;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 //@SpringBootTest
 class ApplicationTests {
