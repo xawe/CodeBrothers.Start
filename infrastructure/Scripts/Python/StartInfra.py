@@ -12,4 +12,3 @@ print(yamlPath + "- teste 123")
 
 with open("/tmp/output.log", "a") as output:
     subprocess.call('docker-compose -f '+ yamlPath+ ' up', shell=True, stdout=output, stderr=output)
-
