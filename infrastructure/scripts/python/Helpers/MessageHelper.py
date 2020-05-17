@@ -3,7 +3,6 @@ from datetime import datetime
 trace = "-------------------------------------------------------------------------------"
 
 
-now = datetime.now()
 
 def MsgTitle(str):
     print("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
@@ -13,7 +12,16 @@ def MsgTitle(str):
     print("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")    
     print("")
 
+def ErrorTitle(str):
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")    
+    print("        " + str + "        ")    
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")    
+    print("")
+
 def Msg(str):
+    now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     print(trace)
     print("")
@@ -21,13 +29,22 @@ def Msg(str):
     print("")
 
 def MsgNoBlock(str):
+    now = datetime.now()
     current_time = now.strftime("%H:%M:%S")    
     print("")
     print(current_time + ' >> ' + str)
     print("")
+
+def SubMsg(str):
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")    
+    print("")
+    print("  " + current_time + ' >> ' + str)
+
     
 
 def SegMsg(str):
+    now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     print(trace)
     print("")
