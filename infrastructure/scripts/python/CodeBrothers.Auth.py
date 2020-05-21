@@ -8,14 +8,14 @@ from Helpers import DockerHelper
 from Helpers.MessageHelper import * 
 
 
-logPath = "/tmp/codebrothers.services.customer.log"
+logPath = "/tmp/codebrothers.services.auth.log"
 currentPath = os.getcwd()
 #removendo 3 niveis do path para pegar informações do backend
 currentPath = os.path.dirname(os.path.dirname(os.path.dirname(currentPath)))
-customerPath = "/backend/java/codebrothers.services.customer"
-imageName = "codebrothers.customer"
+customerPath = "/backend/java/codebrothers.services.auth"
+imageName = "codebrothers.auth"
+port = "8082"
 fullPath = currentPath + customerPath
-port = "8081"
 
 
 def BuildApp(output):        
@@ -40,11 +40,11 @@ def BuildDockerImage(output):
         MsgNoBlock("Imagem Docker criada com sucesso ")
     return retorno
 
-def StartContainer(output):
+def StartContainer(output):    
     processo = "Start Docker Container"
     Msg("Iniciando o processo " + processo)
-    MsgNoBlock("Container " + imageName + " : Ports 8080:8080 8081:8081  | Network : postgresql_postgres-network")
-    retorno = subprocess.call('docker run -d --name '+imageName+' --network postgresql_postgres-network -p 8080:8080 -p '+port+':'+port+' '+ imageName +' ' + fullPath, shell=True, stdout=output, stderr=output, close_fds=True)        
+    MsgNoBlock("Container " + imageName + " : Ports 8082:8082  | Network : postgresql_postgres-network")
+    retorno = subprocess.call('docker run -d --name '+imageName+' --network postgresql_postgres-network -p '+port+':'+port+' '+ imageName +' ' + fullPath, shell=True, stdout=output, stderr=output, close_fds=True)        
     MsgNoBlock("Docker Container iniciado com sucesso")
     return retorno
 
@@ -60,6 +60,6 @@ with open(logPath, "a") as output:
         Msg("Ocorreu um erro no Build da aplicação. Veja detalhes do erro em " + logPath)
 
 
-MsgTitle("Workflow CodeBrother.Services.Customer finalizado")        
+MsgTitle("Workflow CodeBrother.Services.Auth finalizado")        
 
     
