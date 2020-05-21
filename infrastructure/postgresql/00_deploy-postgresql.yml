@@ -1,0 +1,27 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: postgresql-code-brother
+spec:
+  selector:
+    matchLabels:
+      app: postgresql-code-brother
+  template:
+    metadata:
+      labels:
+        app: postgresql-code-brother
+    spec:
+      containers:
+      - name: postgresql-code-brother
+        image: postgres:alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: url_shortener_db
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: CodeBrother@2020
+        - name: PGDATA
+          value: /var/lib/postgresql/data/report

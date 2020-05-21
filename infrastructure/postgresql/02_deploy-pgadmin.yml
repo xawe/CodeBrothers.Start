@@ -1,0 +1,23 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: pgadmin-code-brother
+spec:
+  selector:
+    matchLabels:
+      app: pgadmin-code-brother
+  template:
+    metadata:
+      labels:
+        app: pgadmin-code-brother
+    spec:
+      containers:
+      - name: pgadmin-code-brother
+        image: 'dpage/pgadmin4'
+        ports:
+        - containerPort: 80
+        env:
+        - name: PGADMIN_DEFAULT_EMAIL
+          value: "codebrother@codebrother.com.br"
+        - name: PGADMIN_DEFAULT_PASSWORD
+          value: "CodeBrother@2020"
