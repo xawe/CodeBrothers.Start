@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
+import com.codebrothers.services.customer.dto.UserCredential;
 import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.exceptions.DataBaseException;
 import com.codebrothers.services.customer.exceptions.ResourceNotFoundException;
@@ -24,11 +26,26 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repository;
     
+    @Autowired
+    private AuthorizationService authService;
+    
     public List<Customer> findAll() {
         return repository.findAll();
     }
     
-    public Customer findById(Long id) {      
+    public Customer findById(Long id) {     
+    	String username = "teste";
+        String password = "teste@teste.com";
+
+        byte[] encodedBytes = Base64Utils.encode((username + ":" + password).getBytes());
+
+        String authHeader = "Basic " + new String(encodedBytes);
+
+        //return client.getPersons(authHeader);
+        com.codebrothers.services.customer.dto.UserCredential user = new UserCredential();
+        user.setName("teste");
+        user.setEmail("teste@teste.com");
+    	String r = authService.getAuth(user);
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
     
