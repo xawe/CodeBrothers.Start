@@ -134,3 +134,11 @@ Os Scripts podem ser combinados para execução de pipeline completa do projeto 
         Sobe um novo container com a imagem recem criada.
         
         Não foi includa a funcionalidade para envio ao HUB.
+
+    - CodeBrothers.Auth.py
+
+        Compila o microserviço de Customer
+        Verifica se há um container ativo com o nome de codebrothers.auth e o para
+        Remove container e imagem com o nome de codebrothers.auth caso exista
+        Cria uma nova imagem com o nome codebrothers.auth
+        Sobe um novo container com a imagem recem criada.
