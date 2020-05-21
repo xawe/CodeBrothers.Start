@@ -1,6 +1,5 @@
 package com.codebrothers.services.auth.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
