@@ -26,6 +26,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repository;
     
+    //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
     @Autowired
     private AuthorizationService authService;
     
@@ -33,19 +34,16 @@ public class CustomerService {
         return repository.findAll();
     }
     
-    public Customer findById(Long id) {     
-    	String username = "teste";
-        String password = "teste@teste.com";
-
-        byte[] encodedBytes = Base64Utils.encode((username + ":" + password).getBytes());
-
-        String authHeader = "Basic " + new String(encodedBytes);
-
-        //return client.getPersons(authHeader);
-        com.codebrothers.services.customer.dto.UserCredential user = new UserCredential();
+    public Customer findById(Long id) {         	
+        /* Bloco inserido apenas para testar o FeignClient
+         * Ainda sem utilização pratica da funcionalidade, mas o método abaixo já recupera o token
+         * contectando em http://localhost:8082/api/auth/v1/login
+         */
+    	com.codebrothers.services.customer.dto.UserCredential user = new UserCredential();
         user.setName("teste");
-        user.setEmail("teste@teste.com");
+        user.setEmail("teste@teste.com");        
     	String r = authService.getAuth(user);
+    	
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
     
