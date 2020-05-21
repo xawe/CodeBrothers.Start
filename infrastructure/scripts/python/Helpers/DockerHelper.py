@@ -33,3 +33,15 @@ def RemoveImageByName(name):
 
 #RemoveImageByName("codebrothers.customer")
 #RemoveContainerByName("codebrothers.customer123123")
+
+def stopAllContainers():
+    client = docker.from_env()
+    containers = client.containers.list()    
+    if(len(containers) > 0):
+        SubMsg("Identificado " + str(len(containers))+ " containeres em execução. Iniciando parada")
+        for container in containers:
+            SubMsg("Parando >> " + container.name)
+            container.stop()
+        SubMsg("Parada de containeres concluída com sucesso")    
+
+stopAllContainers()

@@ -51,3 +51,7 @@ def SegMsg(str):
     print(current_time + ' >> ' + str)
     print("")
     print(trace)
+
+def MsgEnd(str):
+    print("<<<<<<<<<<<<<<<<<<<<    "+str+"     >>>>>>>>>>>>>>>>>>>>>>")
+    print("")

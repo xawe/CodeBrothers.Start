@@ -3,6 +3,10 @@ import docker
 import subprocess
 import os
 
+
+#sys.path.append(os.getcwd() + '/..')
+
+
 from Helpers.MessageHelper import * 
 #from Helpers import MessageHelper
 
@@ -19,7 +23,7 @@ MsgTitle("Inicializando infraestrutura CodeBrothers")
 
 with open(logPath, "a") as output:    
     retorno = subprocess.call('docker-compose -f '+ yamlPath+ ' up -d', shell=True, stdout=output, stderr=output)
-    if(retorno == 0):
-        MsgTitle("Infraestrutura Inicializada com sucesso")
+    if(retorno == 0):        
+        MsgEnd("Ambiente inicializado com sucesso")
     else:
         ErrorTitle("Erro ao inicializar Infraestrutura . Verifique os logs " + logPath)

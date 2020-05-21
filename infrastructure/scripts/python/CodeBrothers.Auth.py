@@ -33,7 +33,7 @@ def BuildDockerImage(output):
     DockerHelper.RemoveContainerByName(imageName)
     DockerHelper.RemoveImageByName(imageName)
     
-    MsgNoBlock("Gerando nova imagem >" + imageName)
+    MsgNoBlock("Gerando nova imagem > " + imageName)
 
     retorno = subprocess.call('docker build -f '+ fullPath + '/Dockerfile -t '+imageName+' ' + fullPath, shell=True, stdout=output, stderr=output)        
     if(retorno == 0):
@@ -60,6 +60,6 @@ with open(logPath, "a") as output:
         Msg("Ocorreu um erro no Build da aplicação. Veja detalhes do erro em " + logPath)
 
 
-MsgTitle("Workflow CodeBrother.Services.Auth finalizado")        
+MsgEnd("Workflow CodeBrother.Services.Auth finalizado")
 
     
