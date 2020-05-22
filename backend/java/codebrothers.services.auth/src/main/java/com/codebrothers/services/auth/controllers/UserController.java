@@ -32,8 +32,14 @@ public class UserController {
 	
 	@PostMapping("/validate")
 	@ApiOperation(value = "Validate if User Exists", response = Boolean.class)
-	public ResponseEntity<Boolean> validateUser(@RequestBody @Valid User user){
-		return ResponseEntity.ok().body(service.authenticateUser(user));
+	public ResponseEntity<String> validateUser(@RequestBody @Valid User user){
+		Boolean r = service.authenticateUser(user);
+		if(r) {
+			return ResponseEntity.ok().body("Ok");
+		}
+		else {
+			return ResponseEntity.status(401).body("Usuário ou senha incorreta");
+		}	
 	}
 	
 	@PostMapping()
@@ -62,7 +68,8 @@ public class UserController {
 	@GetMapping()
 	@ApiOperation(value = "View a list of available User", response = User.class, responseContainer = "List")
 	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(service.findAll());
+		List<User> users = service.findAll();
+		return ResponseEntity.ok().body(users);
 	}
 
 	@GetMapping(value = "/{id}")
