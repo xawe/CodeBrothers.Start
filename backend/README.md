@@ -71,6 +71,8 @@ Micro serviço responsável pelo autenticação.
     }
  8. http://localhost:8082/api/user/v1/validate  POST verifíca se o usuário e senha são validos
     Este endpoint está na lista de endpoints liberados
+    Retorna um objeto user em caso de code 200
+    Retorna nada e codigo 401 em caso de não autorizado
     payload    
     {
         "name": "Teste update",        
