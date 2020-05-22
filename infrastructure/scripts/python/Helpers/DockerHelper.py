@@ -43,5 +43,3 @@ def stopAllContainers():
             SubMsg("Parando >> " + container.name)
             container.stop()
         SubMsg("Parada de containeres concluída com sucesso")    
-
-stopAllContainers()
