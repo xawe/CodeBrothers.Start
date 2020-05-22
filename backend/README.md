@@ -88,4 +88,4 @@ Micro serviço responsável pelo autenticação.
 
     - Para rodar a imagem
 
-        docker run --name codebrothers.auth --network postgresql_postgres-network -p 8080:8080 -p 8082:8082 codebrothers.auth -d
+        docker run --name codebrothers.auth --network postgresql_postgres-network -p 8082:8082 codebrothers.auth -d
