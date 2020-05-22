@@ -38,18 +38,19 @@ public class UserService {
         throw new ResourceNotFoundException(user);
     }
     
-    public Boolean authenticateUser(User u) {
+    public User authenticateUser(User u) {
     	
     	List<User> users = userRepo.findByName(u.getName());
     	if(users != null && !users.isEmpty())
     	{
     		User user = users.get(0);
     		if(dataEncryptor.match(u.getPassword(), user.getPassword())) {
-    			return true;
+    			user.setPassword("");
+    			return user;
     		}
     	}
     	
-    	return false;
+    	return null;
     }
     
     public User findUserByNameAndEmail(String name, String email) throws ResourceNotFoundException {

@@ -69,6 +69,13 @@ Micro serviço responsável pelo autenticação.
         "email": "up@date.com",
         "password": "12345"
     }
+ 8. http://localhost:8082/api/user/v1/validate  POST verifíca se o usuário e senha são validos
+    Este endpoint está na lista de endpoints liberados
+    payload    
+    {
+        "name": "Teste update",        
+        "password": "12345"
+    }
 
  - Porta padrão: 8082
  - Docker
