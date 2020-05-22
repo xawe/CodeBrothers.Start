@@ -28,7 +28,13 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-	   	
+	 
+	
+	@PostMapping("/validate")
+	@ApiOperation(value = "Validate if User Exists", response = Boolean.class)
+	public ResponseEntity<Boolean> validateUser(@RequestBody @Valid User user){
+		return ResponseEntity.ok().body(service.authenticateUser(user));
+	}
 	
 	@PostMapping()
     @ApiOperation(value = "Create user ", response = User.class)

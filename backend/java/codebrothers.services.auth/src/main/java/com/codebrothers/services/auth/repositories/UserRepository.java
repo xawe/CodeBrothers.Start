@@ -12,6 +12,7 @@ import com.codebrothers.services.auth.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 //public interface UserRepository extends CrudRepository<User, Long> {
 
-	List<User> findByNameAndEmail(String name, String email);
+	List<User> findByNameAndEmail(String name, String email);	
+	List<User> findByName(String name);
 }
 
