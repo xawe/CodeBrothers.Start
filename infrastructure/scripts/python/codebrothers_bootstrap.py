@@ -4,24 +4,24 @@ import subprocess
 import os
 
 
-from Helpers import DockerHelper
-from Helpers.MessageHelper import * 
+from Helpers import docker_helper
+from Helpers.message_helper import * 
 #mport CodeBrothers.Infrastructure
 
 
 MsgTitle("          Iniciando o ambiente CodeBrothers")
 
 #Parando todos os containeres da máquina antes de iniciar o processo
-DockerHelper.stopAllContainers()
+docker_helper.stopAllContainers()
 
 #Iniciando Infra
-exec(open("CodeBrothers.Infrastructure.py").read())
+exec(open("codebrothers_infrastructure.py").read())
 
 #Construindo e iniciando Customer
-exec(open("CodeBrothers.Customer.py").read())
+exec(open("codebrothers_customer.py").read())
 
 #Construindo e iniciando Auth
-exec(open("CodeBrothers.Auth.py").read())
+exec(open("codebrothers_auth.py").read())
 
 
 print(" <<<<<<<<<<<<<<<<<<<<<<    Ambiente inicializado com sucesso     >>>>>>>>>>>>>>>>>>>>>>>>")

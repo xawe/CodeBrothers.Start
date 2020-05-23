@@ -4,8 +4,8 @@ import subprocess
 import os
 
 #sys.path.insert(0, './Helpers')
-from Helpers import DockerHelper
-from Helpers.MessageHelper import * 
+from Helpers import docker_helper
+from Helpers.message_helper import * 
 
 
 logPath = "/tmp/codebrothers.services.auth.log"
@@ -30,8 +30,8 @@ def BuildDockerImage(output):
     processo = "Build Docker Image"
     Msg("Iniciando o processo " + processo)
     MsgNoBlock("Verificando se existe um container " + imageName)
-    DockerHelper.RemoveContainerByName(imageName)
-    DockerHelper.RemoveImageByName(imageName)
+    docker_helper.RemoveContainerByName(imageName)
+    docker_helper.RemoveImageByName(imageName)
     
     MsgNoBlock("Gerando nova imagem > " + imageName)
 
