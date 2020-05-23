@@ -113,3 +113,32 @@ Para entrar na administração do RabbitMQ
 
     - user: guest
     - pass: guest
+
+
+# Instruções Script Python
+
+Incluído scripts para Inicialização de infraestrutura, compilação e geração de imagens.
+
+Os Scripts podem ser combinados para execução de pipeline completa do projeto ( WIP )
+
+    - StartInfra.py
+    
+        Inicializa os containeres do postgre, pgadmin e rabbitmq. Na pratica, executa o compose localizado em /infrastructure/postgre
+
+    - CodeBrothers.Customer.py
+    
+        Compila o microserviço de Customer
+        Verifica se há um container ativo com o nome de codebrothers.customer e o para
+        Remove container e imagem com o nome de codebrothers.customer caso exista
+        Cria uma nova imagem com o nome codebrothers.customer
+        Sobe um novo container com a imagem recem criada.
+        
+        Não foi includa a funcionalidade para envio ao HUB.
+
+    - CodeBrothers.Auth.py
+
+        Compila o microserviço de Customer
+        Verifica se há um container ativo com o nome de codebrothers.auth e o para
+        Remove container e imagem com o nome de codebrothers.auth caso exista
+        Cria uma nova imagem com o nome codebrothers.auth
+        Sobe um novo container com a imagem recem criada.
