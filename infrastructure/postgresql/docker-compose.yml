@@ -38,6 +38,15 @@ services:
     networks:
       - postgres-network
 
+  eureka-code-brother:
+    image: "codebrothers/codebrothers.eureka"
+    ports:
+      - "8761:8761"    
+    depends_on:
+      - postgresql-code-brother
+    networks:
+      - postgres-network  
+
 networks: 
   postgres-network:
     driver: bridge

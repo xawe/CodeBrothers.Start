@@ -28,7 +28,19 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-	   	
+	 
+	
+	@PostMapping("/validate")
+	@ApiOperation(value = "Validate if User Exists", response = Boolean.class)
+	public ResponseEntity<User> validateUser(@RequestBody @Valid User user){
+		User r = service.authenticateUser(user);
+		if(r != null) {
+			return ResponseEntity.ok().body(r);
+		}
+		else {
+			return ResponseEntity.status(401).body(r);
+		}	
+	}
 	
 	@PostMapping()
     @ApiOperation(value = "Create user ", response = User.class)
@@ -56,7 +68,8 @@ public class UserController {
 	@GetMapping()
 	@ApiOperation(value = "View a list of available User", response = User.class, responseContainer = "List")
 	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(service.findAll());
+		List<User> users = service.findAll();
+		return ResponseEntity.ok().body(users);
 	}
 
 	@GetMapping(value = "/{id}")

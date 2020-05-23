@@ -7,7 +7,7 @@ import os
 #sys.path.append(os.getcwd() + '/..')
 
 
-from Helpers.MessageHelper import * 
+from Helpers.message_helper import * 
 #from Helpers import MessageHelper
 
 currentPath = os.getcwd()

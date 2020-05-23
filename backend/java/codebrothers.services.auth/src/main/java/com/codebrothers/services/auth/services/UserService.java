@@ -38,6 +38,21 @@ public class UserService {
         throw new ResourceNotFoundException(user);
     }
     
+    public User authenticateUser(User u) {
+    	
+    	List<User> users = userRepo.findByName(u.getName());
+    	if(users != null && !users.isEmpty())
+    	{
+    		User user = users.get(0);
+    		if(dataEncryptor.match(u.getPassword(), user.getPassword())) {
+    			user.setPassword("");
+    			return user;
+    		}
+    	}
+    	
+    	return null;
+    }
+    
     public User findUserByNameAndEmail(String name, String email) throws ResourceNotFoundException {
     	//mock para continuar funcionando o teste + teste@teste.com
     	if(email.equals("teste@teste.com") && name.equals("teste")) {

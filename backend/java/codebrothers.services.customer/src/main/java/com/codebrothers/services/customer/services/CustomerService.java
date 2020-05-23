@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
+import com.codebrothers.services.customer.dto.UserCredential;
 import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.exceptions.DataBaseException;
 import com.codebrothers.services.customer.exceptions.ResourceNotFoundException;
@@ -24,11 +26,24 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repository;
     
+    //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
+    @Autowired
+    private AuthorizationService authService;
+    
     public List<Customer> findAll() {
         return repository.findAll();
     }
     
-    public Customer findById(Long id) {      
+    public Customer findById(Long id) {         	
+        /* Bloco inserido apenas para testar o FeignClient
+         * Ainda sem utilização pratica da funcionalidade, mas o método abaixo já recupera o token
+         * contectando em http://localhost:8082/api/auth/v1/login
+         */
+    	com.codebrothers.services.customer.dto.UserCredential user = new UserCredential();
+        user.setName("teste");
+        user.setEmail("teste@teste.com");        
+    	String r = authService.getAuth(user);
+    	
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
     

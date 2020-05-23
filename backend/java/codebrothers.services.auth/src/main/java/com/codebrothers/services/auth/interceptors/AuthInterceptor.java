@@ -32,6 +32,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     public AuthInterceptor() {
         super();
         urlsByPass.add("/api/auth/v1/login");
+        urlsByPass.add("/api/user/v1/validate");
     }
 
     @Override
