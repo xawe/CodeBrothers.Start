@@ -91,3 +91,22 @@ Micro serviço responsável pelo autenticação.
     - Para rodar a imagem
 
         docker run --name codebrothers.auth --network postgresql_postgres-network -p 8082:8082 codebrothers.auth -d
+
+
+
+### Auth services
+    
+    Microserviço responsável por fazer o registro das aplicações, funcionando com um service discovery
+
+    Para acessar a página, utilizar o endereço http://localhost:8761
+
+
+### Instruções para Container
+
+    - Para criar uma imagem
+        
+        docker build -t codebrothers.eureka .
+
+    - Para rodar a imagem
+
+        docker run -d --name codebrothers.eureka --network postgresql_postgres-network -p 8761:8761 codebrothers.eureka
