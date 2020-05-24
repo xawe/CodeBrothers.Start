@@ -15,6 +15,9 @@ defmodule CodebrothersCustomerWeb.Router do
 
   scope "/", CodebrothersCustomerWeb do
     pipe_through :browser
+    # a linha abaixo cria o Crud no endpoint customer.
+    # com esses recursos automáticos, não há camada de service para o crud.
+    # podemos incluir manualmente depois, se necessário
     resources "/customer", CustomerController, except: [:new, :edit]
     get "/", DefaultController, :index
   end
