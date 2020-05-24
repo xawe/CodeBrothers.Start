@@ -142,3 +142,9 @@ Os Scripts podem ser combinados para execução de pipeline completa do projeto 
         Remove container e imagem com o nome de codebrothers.auth caso exista
         Cria uma nova imagem com o nome codebrothers.auth
         Sobe um novo container com a imagem recem criada.
+
+# Dependências Python
+
+    Para correto funcionamento, é necessário baixar a lib docker usando
+
+    - pip install docker
