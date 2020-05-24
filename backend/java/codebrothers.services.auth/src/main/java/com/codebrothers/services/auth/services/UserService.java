@@ -45,7 +45,7 @@ public class UserService {
     	{
     		User user = users.get(0);
     		if(dataEncryptor.match(u.getPassword(), user.getPassword())) {
-    			user.setPassword("");
+    			//user.setPassword("");
     			return user;
     		}
     	}

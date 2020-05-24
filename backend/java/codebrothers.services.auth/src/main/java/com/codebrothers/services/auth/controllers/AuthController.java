@@ -30,7 +30,11 @@ public class AuthController {
     @PostMapping("/login")
     @ApiOperation(value = "API for authentication", response = Object.class, responseContainer = "List")
     public ResponseEntity<?> login(@RequestBody @Valid User user) {
-        return ResponseEntity.ok().body(service.findUser(user));
+    	String token = service.findUser(user);
+    	if(token != null  && !token.isEmpty()) {
+    			return ResponseEntity.ok().body(service.findUser(user));
+    	}
+    	return ResponseEntity.status(401).body("Usuário não autorizado");
     }
     
     @PostMapping("/validate")

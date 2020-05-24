@@ -18,10 +18,10 @@ public class AuthService {
     public String findUser(User user) {
     	
     	//validando se o usuário está cadastrado no banco
-    	User u = userService.findUserByNameAndEmail(user);
+    	User u = userService.authenticateUser(user);
     	if(u != null) {
     		return jwtToken.generateToken(user);
     	}
-    	return jwtToken.generateToken(user);
+    	return null;
     }    
 }
