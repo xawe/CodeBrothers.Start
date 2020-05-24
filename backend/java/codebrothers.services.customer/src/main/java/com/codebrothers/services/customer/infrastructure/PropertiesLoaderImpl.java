@@ -28,12 +28,4 @@ public class PropertiesLoaderImpl implements PropertiesLoader {
     @Value("${customer.created.queue}")
     @Getter private String queueCustomerCreated;
     
-    @Value("${service.auth")
-    @Getter private String AuthServiceAddress;
-    
-    @Value("${auth.validate.user.endpoint")
-    @Getter private String postValidadeUserEndpoint;
-    
-    @Value("${auth.get.token.endpoint")
-    @Getter private String getTokenEndpoint;
 }
