@@ -29,13 +29,33 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
 	private CredentialDecoder credentialDecoder;
 	
     //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
-    @Autowired
-    private AuthorizationService authService;
+    //@Autowired
+    //private AuthorizationService authService;
 	
     public CustomerAutenticacaoInterceptor() {
         super();
     }
     
+    
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
+// Em caso de requerer algum tipo de auteticação vamos implementar nesse interceptor
+        if (request.getHeader("Authorization") == null) {
+            response.setContentType("application/json;charset=UTF-8;");
+            response.getWriter()
+                    .write(new StandardError(Instant.now(), HttpStatus.UNAUTHORIZED.value(), "Autenticação inválida!","Não Autorizado!", request.getRequestURI()).toString());
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());            
+            log.info("Request Method: {} - URI: {} -  Local Port: {} - Auth Type: {} - QueryString: {}",
+                    request.getMethod(), request.getRequestURI(), request.getLocalPort(), "Não autorizado",
+                    request.getQueryString());
+            
+            return false;
+        }
+        return true;
+    }
+    	
+    /* Implementação antiga usando o feignClient --- testes apenas
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
@@ -69,7 +89,7 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
         }
         return false;
     }
-    
+    */
     private HttpServletResponse getUnauthorizedReponse(HttpServletResponse response, HttpServletRequest request) throws IOException {
     	response.setContentType("application/json;charset=UTF-8;");
         response.getWriter()
