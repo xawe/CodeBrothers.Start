@@ -20,7 +20,7 @@ public class AuthService {
     	//validando se o usuário está cadastrado no banco
     	User u = userService.authenticateUser(user);
     	if(u != null) {
-    		return jwtToken.generateToken(user);
+    		return jwtToken.generateToken(u);
     	}
     	return null;
     }    
