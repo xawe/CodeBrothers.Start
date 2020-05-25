@@ -44,9 +44,11 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 // Em caso de requerer algum tipo de auteticação vamos implementar nesse interceptor
-        if (request.getHeader("Authorization") == null && !request.getHeader("Authorization").contains("Bearer")) {
+        if (request.getHeader("Authorization") == null 
+        		|| !request.getHeader("Authorization").contains("Bearer")) {        	
         	getUnauthorizedReponse(response, request);            
             return false;
+        	
         }
         //String auth = request.getHeader("Authorization");                
         return true;
