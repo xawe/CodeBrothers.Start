@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: codebrothers-services-auth
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
+      secrets:
+        enabled: false
