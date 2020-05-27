@@ -3,6 +3,7 @@ package com.codebrothers.services.customer.interceptors;
 import java.io.IOException;
 import java.time.Instant;
 
+import javax.crypto.SecretKey;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.codebrothers.services.customer.dto.User;
@@ -29,46 +32,29 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
 	private CredentialDecoder credentialDecoder;
 	
     //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
-    @Autowired
-    private AuthorizationService authService;
+    //@Autowired
+    //private AuthorizationService authService;
 	
     public CustomerAutenticacaoInterceptor() {
         super();
     }
     
+    
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-//// Em caso de requerer algum tipo de auteticação vamos implementar nesse interceptor
-        if (request.getHeader("Authorization") == null) {
-            response.setContentType("application/json;charset=UTF-8;");
-            response.getWriter()
-                    .write(new StandardError(Instant.now(), HttpStatus.UNAUTHORIZED.value(), "Autenticação inválida!","Não Autorizado!", request.getRequestURI()).toString());
-            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            
-            
-            
+// Em caso de requerer algum tipo de auteticação vamos implementar nesse interceptor
+        if (request.getHeader("Authorization") == null 
+        		|| !request.getHeader("Authorization").contains("Bearer")) {        	
+        	getUnauthorizedReponse(response, request);            
             return false;
+        	
         }
-        else {
-        	//decodificando dados de autorização
-        	User u = credentialDecoder.getUserAuthorizatonData(request.getHeader("Authorization"));
-        	//chamando serviço para obtenção do token
-        	try {
-	        	String r = authService.getAuth(u);
-	        	if(r != null && !r.isEmpty()){
-	        		return true;
-	        	}
-        	}
-        	catch(Exception e) {
-        		//log.error("Ocorreu um erro durante a requisição da autorização :: " + e.getMessage()); 
-        		getUnauthorizedReponse(response, request);
-        		return false;
-        		//throw e;
-        	}
-        }
-        return false;
-    }
+        //String auth = request.getHeader("Authorization");                
+        return true;
+    }  
+    
+    
     
     private HttpServletResponse getUnauthorizedReponse(HttpServletResponse response, HttpServletRequest request) throws IOException {
     	response.setContentType("application/json;charset=UTF-8;");

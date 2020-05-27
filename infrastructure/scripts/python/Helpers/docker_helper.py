@@ -43,3 +43,15 @@ def stopAllContainers():
             SubMsg("Parando >> " + container.name)
             container.stop()
         SubMsg("Parada de containeres concluída com sucesso")    
+
+
+def isContainerActive(containerName):
+    client = docker.from_env()    
+    r = False
+    try:
+        cbr = client.containers.get(containerName)
+        if(cbr.status == 'running'):
+            r = True
+    except Exception as ex:        
+        r = False
+    return r
