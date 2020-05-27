@@ -1,0 +1,7 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql
+data:
+  database-connection: postgresql://postgresql-code-brother:5432/CodeBrothers_Customer

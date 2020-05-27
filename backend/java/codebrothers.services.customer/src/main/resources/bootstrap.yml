@@ -2,8 +2,10 @@ spring:
   application:
     name: codebrothers-services-customer
   cloud:
+    service-registry:
+      auto-registration:        enabled: ${K8_SERVICE_REGISTRY:true}
     kubernetes:
       config:
-        enabled: false
+        enabled: ${K8_CONFIGMAP:true}
       secrets:
-        enabled: false
+        enabled: ${K8_SECRETS:true}

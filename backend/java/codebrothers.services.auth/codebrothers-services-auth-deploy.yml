@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codebrothers-services-auth
+  labels:
+    app: codebrothers-services-auth
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codebrothers-services-auth
+  template:
+    metadata:
+      labels:
+        app: codebrothers-services-auth
+    spec:
+      containers:
+      - name: codebrothers-services-auth
+        image: codebrothers-services-auth:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8082
+        env:
+        - name: DB_CONN
+          valueFrom:
+            configMapKeyRef:
+              name: postgresql
+              key: database-connection
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codebrothers-services-auth
+  labels:
+    app: codebrothers-services-auth
+spec:
+  ports:
+  - port: 8082
+    protocol: TCP
+  selector:
+    app: codebrothers-services-auth
