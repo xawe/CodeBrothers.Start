@@ -72,3 +72,29 @@ kubectl apply -f codebrothers-services-auth-deploy.yml
 ```
 kubectl apply -f codebrothers-services-customer-deploy.yml
 ```
+
+11. Validado deploys
+
+    Deploys:
+
+    ```
+    kubectl get deployments
+    ```
+
+    Services:
+
+    ```
+    kubectl get services
+    ```
+
+    Ingress:
+
+    ```
+    kubectl get ingress
+    ```
+
+    Describe do Ingress
+
+    ```
+    kubectl describe deployments
+    ```
