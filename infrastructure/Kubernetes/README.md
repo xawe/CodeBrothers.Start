@@ -1,3 +1,17 @@
+### Kubernets
+
+Os passos abaixo realizam a configuração das aplicações em POD dentro do Kubernetes, um ponto de atenção, ter as imagens para os deploys. A forma de fácil de realizar a tarefa é atravás de um dos comandos abaixo, e realizar o build da imagem:
+
+```
+eval $(minikube docker-env)
+```
+
+OU
+
+```
+minikube ssh
+```
+
 1. Spring Cloud Kubernetes precisa de acesso as APIs do Kubernetes para recuperar a lista endereços (IPs internos) dos pods em execução para expor em um unico serviço. O comando garante a permissão necessária para isso:
 
 ```
