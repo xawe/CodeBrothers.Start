@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gateway-ingress
+  name: codebrothers-services-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -9,14 +9,14 @@ spec:
     serviceName: default-http-backend
     servicePort: 80
   rules:
-  - host: microservices.info
+  - host: codebrothers-services.com
     http:
       paths:
-      - path: /codebrothers-customer
+      - path: /codebrothers-services-customer
         backend:
           serviceName: codebrothers-services-customer
           servicePort: 8081
-      - path: /codebrothers-auth
+      - path: /codebrothers-services-auth
         backend:
           serviceName: codebrothers-services-auth
           servicePort: 8082

@@ -18,10 +18,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication
 @EnableDiscoveryClient
-@EnableSwagger2
 @EnableFeignClients
+@EnableSwagger2
+@SpringBootApplication
 public class Application {
 
     @Autowired

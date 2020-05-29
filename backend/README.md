@@ -19,7 +19,7 @@ Micro serviço responsável pelo cadastrado do Cliente.
 
     - Para criar uma imagem
         
-        docker build -t codebrothers.customer .
+        docker build -t codebrothers-services-customer:latest .
 
     - Para rodar a imagem
 

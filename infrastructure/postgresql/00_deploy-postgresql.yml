@@ -23,5 +23,10 @@ spec:
           value: postgres
         - name: POSTGRES_PASSWORD
           value: CodeBrother@2020
-        - name: PGDATA
-          value: /var/lib/postgresql/data/report
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgresql-code-brother
+      volumes:
+        - name: postgresql-code-brother
+          persistentVolumeClaim:
+            claimName: postgresql-code-brother

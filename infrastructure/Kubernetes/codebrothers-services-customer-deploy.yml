@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: codebrothers-services-auth
+  name: codebrothers-services-customer
   labels:
-    app: codebrothers-services-auth
+    app: codebrothers-services-customer
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: codebrothers-services-auth
+      app: codebrothers-services-customer
   template:
     metadata:
       labels:
-        app: codebrothers-services-auth
+        app: codebrothers-services-customer
     spec:
       containers:
-      - name: codebrothers-services-auth
-        image: codebrothers-services-auth:latest
+      - name: codebrothers-services-customer
+        image: codebrothers-services-customer:latest
         imagePullPolicy: Never
         ports:
-        - containerPort: 8082
+        - containerPort: 8081
         env:
         - name: DB_CONN
           valueFrom:
@@ -40,12 +40,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: codebrothers-services-auth
+  name: codebrothers-services-customer
   labels:
-    app: codebrothers-services-auth
+    app: codebrothers-services-customer
 spec:
-  ports:
-  - port: 8082
-    protocol: TCP
   selector:
-    app: codebrothers-services-auth
+    app: codebrothers-services-customer
+  type: NodePort
+  ports:
+  - port: 8081
+    targetPort: 8081
+    protocol: TCP
