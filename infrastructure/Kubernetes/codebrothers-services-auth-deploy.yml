@@ -24,17 +24,17 @@ spec:
             - name: DB_CONN
               valueFrom:
                 configMapKeyRef:
-                  name: postgresql
+                  name: codebrothers-configmap
                   key: database-connection
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgresql
+                  name: codebrothers-secrets
                   key: database-user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgresql
+                  name: codebrothers-secrets
                   key: database-password
 ---
 apiVersion: v1
@@ -48,6 +48,5 @@ spec:
     app: codebrothers-services-auth
   type: NodePort
   ports:
-  - port: 8082
-    targetPort: 8082
-    protocol: TCP
+    - port: 8082
+      targetPort: 8082

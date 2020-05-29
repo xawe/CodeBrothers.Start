@@ -20,9 +20,15 @@ spec:
         - name: POSTGRES_DB
           value: url_shortener_db
         - name: POSTGRES_USER
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: codebrothers-secrets
+              key: database-user
         - name: POSTGRES_PASSWORD
-          value: CodeBrother@2020
+          valueFrom:
+            secretKeyRef:
+              name: codebrothers-secrets
+              key: database-password
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
             name: postgresql-code-brother
@@ -30,3 +36,17 @@ spec:
         - name: postgresql-code-brother
           persistentVolumeClaim:
             claimName: postgresql-code-brother
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-code-brother
+  labels:
+    app: postgresql-code-brother
+spec:
+  selector:
+    app: postgresql-code-brother
+  type: NodePort
+  ports:
+    - port: 5432
+      targetPort: 5432
