@@ -6,13 +6,13 @@ metadata:
     app: codebrothers-services-customer
 spec:
   replicas: 2
-#  selector:
-#    matchLabels:
-#      app: codebrothers-services-customer
-#  template:
-#    metadata:
-#      labels:
-#        app: codebrothers-services-customer
+  selector:
+    matchLabels:
+      app: codebrothers-services-customer
+  template:
+    metadata:
+      labels:
+        app: codebrothers-services-customer
     spec:
       containers:
         - name: codebrothers-services-customer
