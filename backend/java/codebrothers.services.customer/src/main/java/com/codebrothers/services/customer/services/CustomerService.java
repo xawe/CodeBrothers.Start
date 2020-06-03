@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Base64Utils;
 
-import com.codebrothers.services.customer.dto.User;
 import com.codebrothers.services.customer.entities.Customer;
 import com.codebrothers.services.customer.exceptions.DataBaseException;
 import com.codebrothers.services.customer.exceptions.ResourceNotFoundException;
@@ -27,8 +25,8 @@ public class CustomerService {
     private CustomerRepository repository;
     
     //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
-    @Autowired
-    private AuthorizationService authService;
+//    @Autowired
+//    private AuthorizationService authService;
     
     public List<Customer> findAll() {
         return repository.findAll();
