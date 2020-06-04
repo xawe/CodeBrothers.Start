@@ -36,7 +36,8 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-//// Em caso de requerer algum tipo de auteticação vamos implementar nesse interceptor
+        //// Em caso de requerer algum tipo de auteticação vamos implementar nesse
+        //// interceptor
         if (request.getHeader("Authorization") == null) {
             response.setContentType("application/json;charset=UTF-8;");
             response.getWriter().write(new StandardError(Instant.now(), HttpStatus.UNAUTHORIZED.value(),
@@ -47,7 +48,7 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
         } else {
             // chamando serviço para obtenção do token
             try {
-                val r = authService.validateToken(request.getHeader("Authorization") );
+                val r = authService.validateToken(request.getHeader("Authorization"));
                 if (r != null && !r.isEmpty()) {
                     return true;
                 }
