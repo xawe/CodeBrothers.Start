@@ -18,6 +18,26 @@ spec:
         - containerPort: 80
         env:
         - name: PGADMIN_DEFAULT_EMAIL
-          value: "codebrother@codebrother.com.br"
+          valueFrom:
+            secretKeyRef:
+              name: codebrothers-secrets
+              key: pgadmin-user
         - name: PGADMIN_DEFAULT_PASSWORD
-          value: "CodeBrother@2020"
+          valueFrom:
+            secretKeyRef:
+              name: codebrothers-secrets
+              key: pgadmin-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgadmin-code-brother
+  labels:
+    app: pgadmin-code-brother
+spec:
+  selector:
+    app: pgadmin-code-brother
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80

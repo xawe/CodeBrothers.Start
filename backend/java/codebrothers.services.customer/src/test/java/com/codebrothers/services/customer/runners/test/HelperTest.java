@@ -1,9 +1,5 @@
 package com.codebrothers.services.customer.runners.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 import com.codebrothers.services.customer.runners.Helpers;
@@ -30,7 +26,7 @@ class HelperTest {
 	void Get10SecondNames() {
 		Helpers h = new Helpers();
 		
-		Random r = new Random();
+		//Random r = new Random();
 		System.out.println("Iniciando teste SobreNomes");
 		for (int i = 0; i < 10; i++) {
 			
@@ -43,7 +39,7 @@ class HelperTest {
 	void Get10RandomDates() {
 		Helpers h = new Helpers();
 		
-		Random r = new Random();
+		//Random r = new Random();
 		System.out.println("Iniciando teste de datas aleatorias");
 		for (int i = 0; i < 10; i++) {
 			
@@ -56,7 +52,7 @@ class HelperTest {
 	void Get10RandomCPFS() {
 		Helpers h = new Helpers();
 		
-		Random r = new Random();
+		//Random r = new Random();
 		System.out.println("Iniciando teste de cpfs Aleatorios");
 		for (int i = 0; i < 10; i++) {
 			
@@ -69,7 +65,7 @@ class HelperTest {
 	void Get10RandomRGs() {
 		Helpers h = new Helpers();
 		
-		Random r = new Random();
+		//Random r = new Random();
 		System.out.println("Iniciando teste de rgs Aleatorios");
 		for (int i = 0; i < 10; i++) {
 			

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: codebrothers-services-auth
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: ${K8_SERVICE_REGISTRY:true}
+    kubernetes:
+      config:
+        name : codebrothers-configmap
+        enabled: ${K8_CONFIGMAP:true}
+      secrets:
+        name: codebrothers-secrets
+        enabled: ${K8_SECRETS:true}

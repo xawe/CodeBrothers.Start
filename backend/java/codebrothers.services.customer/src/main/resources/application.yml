@@ -1,0 +1,56 @@
+server:
+    # Porta da aplicacao
+    port: 8081 
+spring:
+    # Config banco de dados
+    datasource: 
+        url: jdbc:${DB_CONN:postgresql://postgresql-code-brother:5432/CodeBrothers_Customer}
+        username: ${DB_USER:postgres}
+        password: ${DB_PASSWORD:CodeBrother@2020}
+    jpa:
+        open-in-view: true
+        # Exibe os comandos SQL que forem executados nos logs do console 
+        show-sql: false
+        hibernate:
+            # Faz atualizacoes de estrutura de tabelas existentes e cria novas tabelas
+            ddl-auto: update 
+        properties:
+            hibernate:
+                # Exibe os comandos SQL formatados
+                format_sql: false 
+                jdbc:
+                    lob:
+                        # Evitar "warning" do hibernate ao tentar recuperar metadados do postgresql 
+                        non_contextual_creation: true 
+    ### messageBroker
+    rabbitmq: 
+        host: rabbitmq-code-brother
+        username: guest
+        password: guest
+        port: 5672
+    ### Kubernetes Service Discovery ###
+    cloud:
+        kubernetes:
+            discovery:
+                enabled: true
+                all-namespaces: true
+#Actuator
+##WIP : A configuracao abaixo torna o retorno como UP, porem desabilita os detalhes
+#management.health.defaults.enabled=false
+#Habilita os detalhes do health check
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+#Log
+logging: 
+    level: 
+        root: INFO
+        com:
+            codebrothers:
+                services:
+                    customer: TRACE

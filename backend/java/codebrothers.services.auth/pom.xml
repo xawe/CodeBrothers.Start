@@ -3,18 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!--  
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
-		<relativePath /> 
-	</parent>
-	-->
-	<parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Hoxton.RELEASE</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
     </parent>
 	<groupId>com.codebrothers.services.auth</groupId>
 	<artifactId>codebrothers.services.auth</artifactId>
@@ -78,13 +70,13 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
-		</dependency>		 		
-		
-		<dependency>
-		   <groupId>org.springframework</groupId>
-		   <artifactId>spring-aop</artifactId>		   
 		</dependency>
-	 	<dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
 			<version>0.11.1</version>
@@ -98,41 +90,50 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<!-- or jjwt-gson if Gson is preferred -->
-			<artifactId>jjwt-jackson</artifactId> 
+			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.1</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-		    <groupId>at.favre.lib</groupId>
-		    <artifactId>bcrypt</artifactId>
-		    <version>0.9.0</version>
+			<groupId>at.favre.lib</groupId>
+			<artifactId>bcrypt</artifactId>
+			<version>0.9.0</version>
 		</dependency>
-		
-		<dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>2.0.0.RELEASE</version>
-           </dependency> 
-           <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-                <version>2.0.0.RELEASE</version>
-           </dependency>
-           <dependency>
-			    <groupId>com.netflix.eureka</groupId>
-			    <artifactId>eureka-client</artifactId>
-			    <version>1.9.22</version>
-			    <scope>runtime</scope>
-			</dependency>
-			<dependency>
-			    <groupId>org.springframework.cloud</groupId>
-			    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-			    <version>2.2.2.RELEASE</version>
-			</dependency>
-		
-		
-	</dependencies>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-kubernetes-ribbon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+	</dependencies>
+	
+	   <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -141,5 +142,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

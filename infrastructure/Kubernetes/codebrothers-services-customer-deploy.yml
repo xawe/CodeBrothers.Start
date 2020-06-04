@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codebrothers-services-customer
+  labels:
+    app: codebrothers-services-customer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codebrothers-services-customer
+  template:
+    metadata:
+      labels:
+        app: codebrothers-services-customer
+    spec:
+      containers:
+        - name: codebrothers-services-customer
+          image: codebrothers-services-customer:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8081
+          env:
+            - name: DB_CONN
+              valueFrom:
+                configMapKeyRef:
+                  name: codebrothers-configmap
+                  key: database-connection
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: codebrothers-secrets
+                  key: database-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: codebrothers-secrets
+                  key: database-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codebrothers-services-customer
+  labels:
+    app: codebrothers-services-customer
+spec:
+  selector:
+    app: codebrothers-services-customer
+  type: NodePort
+  ports:
+    - port: 8081
+      targetPort: 8081

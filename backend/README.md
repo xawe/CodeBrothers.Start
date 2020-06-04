@@ -19,7 +19,7 @@ Micro serviço responsável pelo cadastrado do Cliente.
 
     - Para criar uma imagem
         
-        docker build -t codebrothers.customer .
+        docker build -t codebrothers-services-customer:latest .
 
     - Para rodar a imagem
 
@@ -86,11 +86,11 @@ Micro serviço responsável pelo autenticação.
 
     - Para criar uma imagem
         
-        docker build -t codebrothers.auth .
+        docker build -t codebrothers-services-auth:latest .
 
     - Para rodar a imagem
 
-        docker run --name codebrothers.auth --network postgresql_postgres-network -p 8082:8082 codebrothers.auth -d
+        docker run --name codebrothers-services-auth --network postgresql_postgres-network -p 8082:8082 codebrothers-services-auth:latest -d
 
 
 

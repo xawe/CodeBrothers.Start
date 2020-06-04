@@ -1,6 +1,6 @@
 package com.codebrothers.services.customer.infrastructure.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,12 @@ class CredentialDecoderTest {
 	}
 
 	private String encodedAdmin = "Basic YWRtaW46YWRtaW4=";
-	
+
 	@Test
 	void GetUserFromBase64Test() {
 		CredentialDecoderImpl cd = new CredentialDecoderImpl();
 		User u =cd.getUserAuthorizatonData(encodedAdmin);
 		assertEquals(u.getName(), "admin");
-		assertEquals(u.getPassword(), "admin");
-		
+		assertEquals(u.getPassword(), "admin");		
 	}
 }
