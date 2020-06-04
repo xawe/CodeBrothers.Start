@@ -2,6 +2,8 @@ package com.codebrothers.services.customer.interceptors;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
-
+    private Set<String> urlsByPass = new HashSet<>();
+    
     // Injeção do serviço que utiliza o feigClient para recuperar o token de
     // autorização
     @Autowired
@@ -31,11 +34,16 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
 
     public CustomerAutenticacaoInterceptor() {
         super();
+        urlsByPass.add("/api/customers/v1");
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+
+        if(!urlsByPass.stream().filter(byPass -> request.getRequestURI().contains(byPass)).findAny().isPresent())
+            return true;
+        
         //// Em caso de requerer algum tipo de auteticação vamos implementar nesse
         //// interceptor
         if (request.getHeader("Authorization") == null) {

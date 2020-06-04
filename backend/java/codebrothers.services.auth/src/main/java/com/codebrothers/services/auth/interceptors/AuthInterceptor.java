@@ -31,8 +31,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
     public AuthInterceptor() {
         super();
-        urlsByPass.add("/api/auth/v1/login");
-        urlsByPass.add("/api/user/v1/validate");
+        urlsByPass.add("/api/auth/v1/validate");
+        urlsByPass.add("/api/user/v1");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         // Em caso de requerer algum tipo de auteticação vamos implementar nesse
         // interceptor
         
-        if(urlsByPass.contains(request.getRequestURI()))
+        if(!urlsByPass.stream().filter(byPass -> request.getRequestURI().contains(byPass)).findAny().isPresent())
             return true;
         
         if (request.getHeader("Authorization") == null) {

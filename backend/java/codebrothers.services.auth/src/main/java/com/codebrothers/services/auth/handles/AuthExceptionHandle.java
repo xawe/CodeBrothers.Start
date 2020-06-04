@@ -45,7 +45,7 @@ public class AuthExceptionHandle  {
 
     @ExceptionHandler(ResourceForbiddenException.class)
     public ResponseEntity<StandardError> resourceForbiddenException(ResourceForbiddenException  e, HttpServletRequest request) {
-        String error = "Database error!";
+        String error = "Authentication error!";
         HttpStatus status = HttpStatus.UNAUTHORIZED;
         
         log.error("Erro - {} - Stacktrace{}", e.getMessage(), e.getStackTrace());
