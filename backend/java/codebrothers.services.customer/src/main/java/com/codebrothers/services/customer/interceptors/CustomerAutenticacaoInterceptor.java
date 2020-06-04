@@ -52,11 +52,9 @@ public class CustomerAutenticacaoInterceptor extends HandlerInterceptorAdapter {
                     return true;
                 }
             } catch (Exception e) {
-                // log.error("Ocorreu um erro durante a requisição da autorização :: " +
-                // e.getMessage());
+                log.info("Ocorreu um erro durante a requisição da autorização :: " + e.getMessage());
                 getUnauthorizedReponse(response, request);
                 return false;
-                // throw e;
             }
         }
         return false;
