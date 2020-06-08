@@ -8,11 +8,19 @@ Os passos abaixo realizam a configuração das aplicações em POD dentro do Kub
 docker build -t codebrothers-services-customer:latest .
 ```
 
-1.2. Salvar a imagem em formator ".tar" localmente (fora da gestão do docker) 
+    1.2. Salvar a imagem em formator ".tar" localmente (fora da gestão do docker) 
 
 ```
 docker save codebrothers-services-customer:latest > codebrothers-services-customer.tar
 ```
+
+    1.3 Edite o arquivo "/etc/hosts" dentro do wsl e o arquivo "c:\Windows\System32\drivers\etc\hosts" do windows, adicione as linhas abaixo:
+
+```
+127.0.0.1   codebrothers-services.com
+127.0.0.1   postgresql-code-brother
+127.0.0.1   rabbitmq-code-brother
+``` 
 
 2. Importar a imagem para o microk8s
 
