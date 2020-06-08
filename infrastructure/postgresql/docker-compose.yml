@@ -10,7 +10,6 @@ services:
     environment:
       POSTGRES_PASSWORD: "CodeBrother@2020"
       PGDATA: /var/lib/postgresql/data/report
-
     networks:
       - postgres-network
 
