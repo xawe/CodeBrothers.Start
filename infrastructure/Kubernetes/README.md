@@ -14,7 +14,8 @@ docker build -t codebrothers-services-customer:latest .
 docker save codebrothers-services-customer:latest > codebrothers-services-customer.tar
 ```
 
-    1.3 Edite o arquivo "/etc/hosts" dentro do wsl e o arquivo "c:\Windows\System32\drivers\etc\hosts" do windows, adicione as linhas abaixo:
+    1.3 Edite o arquivo "/etc/hosts" dentro do wsl e o arquivo 
+    "c:\Windows\System32\drivers\etc\hosts" do windows, adicione as linhas abaixo:
 
 ```
 127.0.0.1   codebrothers-services.com
