@@ -26,7 +26,7 @@ docker save codebrothers-services-customer:latest > codebrothers-services-custom
 2. Importar a imagem para o microk8s
 
 ```
-microk8s ctr import codebrothers-services-customer.tar
+microk8s ctr image import codebrothers-services-customer.tar
 ```
 
 3. ConfigMap - Responsável por armazenar endereços e possiveis configurações que serão injetadas no container através de variáveis de ambiente
