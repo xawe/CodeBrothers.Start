@@ -94,11 +94,11 @@ Micro serviço responsável pelo autenticação.
 
 
 
-### Auth services
+### Eureka services
     
     Microserviço responsável por fazer o registro das aplicações, funcionando com um service discovery
 
-    Para acessar a página, utilizar o endereço http://localhost:8761
+    Para acessar a página do service discovery, utilizar o endereço http://localhost:8761
 
 
 ### Instruções para Container
