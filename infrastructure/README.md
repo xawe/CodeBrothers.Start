@@ -40,6 +40,18 @@ Alguns comandos uteis do psql
 
     - \dt                       --- lista as tabelas do banco conectado
 
+# Issue relacionada ao banco de dados
+
+    Durante a execução local de testes unitários, pode ocorrer erro de conexão ao banco de dados pois o endereço de conexão utiliza um hostname "postgresql-code-brother" definido no docker compose.
+    
+    Quando executado localmente, esse endereço não é resolvido e um erro de conexão ocorre.
+
+    Resolução 1 - Incluir a seguinte linha no arquivo /etc/hosts 
+        
+        127.0.0.1       postgresql-code-brother
+
+    Resolução 1 - Comentar o método "contextLoads()" em classes de testes definidas com a anotação "@SpringBootTest"
+
 ## 🎈 pgAdmin 4
 
 O pgAdmin é uma plataforma opensource de administração e desenvolvimento para PostgreSQL e seus sistemas de gerenciamento de banco de dados relacionados. Escrito em Python e jQuery, ele suporta todos os recursos encontrados no PostgreSQL. Você pode utilizar o pgAdmin para fazer tudo, desde escrever consultas SQL básicas a monitorar seus bancos de dados e configurar arquiteturas de banco de dados avançadas.
