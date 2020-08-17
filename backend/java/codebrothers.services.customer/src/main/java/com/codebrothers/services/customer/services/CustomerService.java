@@ -27,8 +27,8 @@ public class CustomerService {
     private CustomerRepository repository;
     
     //Injeção do serviço que utiliza o feigClient para recuperar o token de autorização
-    @Autowired
-    private AuthorizationService authService;
+    //@Autowired
+    //private AuthorizationService authService;
     
     public List<Customer> findAll() {
         return repository.findAll();

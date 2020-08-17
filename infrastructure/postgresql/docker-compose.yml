@@ -47,6 +47,16 @@ services:
     networks:
       - postgres-network  
 
+  jaegger-code-brother:
+    image: "jaegertracing/all-in-one:latest"
+    ports:
+      - "5775:5775/udp"
+      - "16686:16686"
+    depends_on:
+      - postgresql-code-brother
+    networks:
+      - postgres-network  
+
 networks: 
   postgres-network:
     driver: bridge
