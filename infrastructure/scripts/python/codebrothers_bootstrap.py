@@ -17,11 +17,11 @@ docker_helper.stopAllContainers()
 #Iniciando Infra
 exec(open("codebrothers_infrastructure.py").read())
 
-#Construindo e iniciando Customer
-exec(open("codebrothers_customer.py").read())
-
 #Construindo e iniciando Auth
 exec(open("codebrothers_auth.py").read())
+
+#Construindo e iniciando Customer
+exec(open("codebrothers_customer.py").read())
 
 
 print(" <<<<<<<<<<<<<<<<<<<<<<    Ambiente inicializado com sucesso     >>>>>>>>>>>>>>>>>>>>>>>>")
