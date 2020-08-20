@@ -16,11 +16,15 @@ spec:
     spec:
       containers:
         - name: codebrothers-services-auth
-          image: codebrothers-services-auth:latest
-          imagePullPolicy: Never
+          image: localhost:32000/codebrothers-services-auth:latest
           ports:
             - containerPort: 8082
           env:
+            - name: JAVA_OPTS
+              valueFrom:
+                configMapKeyRef:
+                  name: codebrothers-configmap
+                  key: JAVA_OPTS
             - name: DB_CONN
               valueFrom:
                 configMapKeyRef:
@@ -48,5 +52,7 @@ spec:
     app: codebrothers-services-auth
   type: NodePort
   ports:
-    - port: 8082
+    - name: http
+      protocol: TCP
+      port: 80
       targetPort: 8082

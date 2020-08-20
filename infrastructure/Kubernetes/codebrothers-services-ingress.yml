@@ -1,22 +1,26 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: codebrothers-services-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-    serviceName: default-http-backend
-    servicePort: 80
   rules:
-  - host: codebrothers-services.com
+# expoem na porta 80, quando houver uma requisição
+# http://codebrothers-services-customer será direcionado 
+# para o microserviço no K8S registrodo no serviceName
+  - host: codebrothers-services-customer
     http:
       paths:
-      - path: /codebrothers-services-customer
-        backend:
+      - backend:
           serviceName: codebrothers-services-customer
-          servicePort: 8081
-      - path: /codebrothers-services-auth
-        backend:
+          servicePort: 80
+# expoem na porta 80, quando houver uma requisição
+# http://codebrothers-services-auth será direcionado 
+# para o microserviço no K8S registrodo no serviceName
+  - host: codebrothers-services-auth
+    http:
+      paths:
+      - backend:
           serviceName: codebrothers-services-auth
-          servicePort: 8082
+          servicePort: 80

@@ -54,3 +54,6 @@ logging:
             codebrothers:
                 services:
                     customer: TRACE
+# URL do microservice para autenticacao        
+codebrothers-services-auth:
+  url: "localhost:8082"

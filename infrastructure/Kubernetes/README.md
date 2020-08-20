@@ -5,7 +5,7 @@ Os passos abaixo realizam a configuração das aplicações em POD dentro do Kub
 1. Realizar o build da imagem com o docker
 
 ```
-docker build -t codebrothers-services-customer:latest .
+docker build . -t codebrothers-services-customer:latest
 ```
 
     Salvar a imagem em formator ".tar" localmente (fora da gestão do docker) 
@@ -19,6 +19,8 @@ docker save codebrothers-services-customer:latest > codebrothers-services-custom
 
 ```
 127.0.0.1   codebrothers-services.com
+127.0.0.1   codebrothers-services-auth
+127.0.0.1   codebrothers-services-customer
 127.0.0.1   postgresql-code-brother
 127.0.0.1   rabbitmq-code-brother
 ``` 

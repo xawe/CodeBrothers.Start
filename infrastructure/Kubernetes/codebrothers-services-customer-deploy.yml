@@ -16,11 +16,15 @@ spec:
     spec:
       containers:
         - name: codebrothers-services-customer
-          image: codebrothers-services-customer:latest
-          imagePullPolicy: Never
+          image: localhost:32000/codebrothers-services-customer:latest
           ports:
             - containerPort: 8081
           env:
+            - name: JAVA_OPTS
+              valueFrom:
+                configMapKeyRef:
+                  name: codebrothers-configmap
+                  key: JAVA_OPTS
             - name: DB_CONN
               valueFrom:
                 configMapKeyRef:
@@ -48,5 +52,7 @@ spec:
     app: codebrothers-services-customer
   type: NodePort
   ports:
-    - port: 8081
+    - name: http
+      protocol: TCP
+      port: 80
       targetPort: 8081

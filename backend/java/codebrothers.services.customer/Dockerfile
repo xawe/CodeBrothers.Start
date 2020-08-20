@@ -1,13 +1,16 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 
-WORKDIR /opt/app
+ENV APP_NAME codebrothers-services-customer
+ENV APP_HOME /opt/codebrothers
+ENV LANG en_US.UTF-8
+ENV JAVA_OPTS ''
 
-EXPOSE 8080 8081
+WORKDIR $APP_HOME
 
-ARG JAR_FILE=target/codebrothers.services.customer-0.0.1-SNAPSHOT.war
+EXPOSE 8081
 
-# cp spring-boot-web.jar /opt/app/app.war
-COPY ${JAR_FILE} app.jar
+LABEL SERVICE_NAME=$APP_NAME
 
-# java -jar /opt/app/app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+ADD target/*.war ${APP_HOME}/${APP_NAME}.jar
+
+ENTRYPOINT ["sh","-c","java $JAVA_OPTS -Dapp=${APP_NAME} -jar ${APP_NAME}.jar"]

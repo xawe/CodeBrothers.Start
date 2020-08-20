@@ -5,3 +5,4 @@ metadata:
   name: codebrothers-configmap
 data:
   database-connection: postgresql://postgresql-code-brother:5432/CodeBrothers_Customer
+  JAVA_OPTS: -server -Xms256m -Xmx256m

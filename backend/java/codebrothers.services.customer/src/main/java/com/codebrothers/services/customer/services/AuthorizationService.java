@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.codebrothers.services.customer.dto.User;
 
-@FeignClient(name = "codebrothers-services-auth")
+@FeignClient(name = "codebrothers-services-auth", url="${codebrothers-services-auth.url}")
 //@FeignClient(value="com.codebrothers.services.auth")
 public interface AuthorizationService {
 
