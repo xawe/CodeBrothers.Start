@@ -46,7 +46,8 @@ metadata:
 spec:
   selector:
     app: postgresql-code-brother
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 5432
+      protocol: TCP
       targetPort: 5432

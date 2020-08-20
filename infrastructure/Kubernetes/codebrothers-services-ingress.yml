@@ -8,7 +8,7 @@ spec:
   rules:
 # expoem na porta 80, quando houver uma requisição
 # http://codebrothers-services-customer será direcionado 
-# para o microserviço no K8S registrodo no serviceName
+# para o microserviço no K8S registrado no serviceName
   - host: codebrothers-services-customer
     http:
       paths:
@@ -17,10 +17,19 @@ spec:
           servicePort: 80
 # expoem na porta 80, quando houver uma requisição
 # http://codebrothers-services-auth será direcionado 
-# para o microserviço no K8S registrodo no serviceName
+# para o microserviço no K8S registrado no serviceName
   - host: codebrothers-services-auth
     http:
       paths:
       - backend:
           serviceName: codebrothers-services-auth
+          servicePort: 80
+# expoem na porta 80, quando houver uma requisição
+# https://pgadmin-code-brother será direcionado 
+# para o pgAdmin no K8S registrado no serviceName
+  - host: pgadmin-code-brother
+    http:
+      paths:
+      - backend:
+          serviceName: pgadmin-code-brother
           servicePort: 80
