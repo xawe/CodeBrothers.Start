@@ -1,0 +1,24 @@
+[package]
+name = "codebrothers-services-user"
+version = "0.1.0"
+authors = ["marcosjlima <marcos_jlima@yahoo.com.br>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "3.1.0"
+chrono = { version = "0.4.19", features = ["serde"] }
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+diesel = { version = "1.4.5", features = ["postgres","uuidv07", "r2d2", "chrono"] }
+derive_more = "0.99.11"
+dotenv = "0.15.0"
+futures = "0.3.6"
+r2d2 = "0.8.9"
+reqwest = "0.10.8"
+#openssl = { version = "0.10", features = ["vendored"] }
+#alcoholic_jwt = "1.0.0"
+#actix-web-httpauth = { git = "https://github.com/actix/actix-web-httpauth" }
+#actix-service = "1.0.1"
